@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Drug</title>
+</head>
+<!-- Giao diện cho createDrug.html -->
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+    
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" required><br>
+    
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" required><br>
+    
+        <label for="productionDate">Production Date:</label>
+        <input type="text" id="productionDate" required><br>
+    
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" required><br>
+    
+        <label for="location">Location:</label>
+        <input type="text" id="location" required><br>
+    
+        <label for="batchNumber">Batch Number:</label>
+        <input type="text" id="batchNumber" required><br>
+    
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" required><br>
+    
+        <label for="status">Status:</label>
+        <input type="checkbox" id="status"><br>
+    </form>
+    <button type="button" onclick="createDrug()">Create Drug</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="./src/connect.js"></script>
+    <script src="./src/createDrug.js"></script>
+    <script>
+        // Ensure that Web3 is defined before calling connectContract
+        if (typeof window.web3 === 'undefined') {
+            throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+        }
+
+        // Ensure that connectContract is called after Web3 is defined
+        window.addEventListener('DOMContentLoaded', (event) => {
+            connectContract();
+        });
+    </script>
+</body>
+</html>
