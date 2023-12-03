@@ -45,4 +45,8 @@ const createDrug = async () => {
     } catch (error) {
         console.error("Error creating drug:", error);
     }
+    redirectToShowDrug();
 };
+function redirectToShowDrug() {
+    window.location.href = "showDrug.html";
+}
