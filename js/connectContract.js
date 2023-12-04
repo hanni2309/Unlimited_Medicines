@@ -1,5 +1,6 @@
    //2- connect to smart contract
-   const connectContract = async () => {
+   async function connectContract() {
+  //  const connectContract = async () => {
     const ABI = [
 {
 "inputs": [],
