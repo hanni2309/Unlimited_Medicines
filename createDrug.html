@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Drug</title>
+  
+    <style>
+        /* Add this CSS to your existing stylesheet or create a new one */
+        *{
+            background-color: aquamarine;
+            padding: 0;
+            margin: 0;
+        }
+
+        label, input{
+            background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+            transition: background-position 0.5s;
+            background-size: 200% auto;
+            cursor: pointer;
+            animation: rainbowAnimation 10s linear infinite;
+        }
+       
+        
+        
+        @keyframes rainbowAnimation {
+          0% {
+            background-position: 100% 0%;
+          }
+          100% {
+            background-position: -100% 0%;
+          }
+        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    float : right;
+    background-color: lightskyblue;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: lightgoldenrodyellow;
+    border: 1px black double;
+}
+
+/* Optional: Style the checkbox */
+input[type="checkbox"] {
+    margin-top: 8px;
+}
+
+    </style>
+</head>
+<!-- Giao diện cho createDrug.html -->
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Tên thuốc..." required><br>
+    
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" placeholder="Phân loại..." required><br>
+    
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
+    
+        <label for="productionDate">Production Date:</label>
+        <input type="text" id="productionDate" placeholder="Ngày sản xuất..." required><br>
+    
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" placeholder="số lượng..." required><br>
+    
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Vị trí..." required><br>
+    
+        <label for="batchNumber">Batch Number:</label>
+        <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
+    
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
+    
+        <label for="status">Status:</label>
+        <input type="checkbox" placeholder="true or false" id="status"><br>
+    </form>
+    <button class="rainbow-hover" type="button" onclick="createDrug()">Create Drug</button>
+    <button class="rainbow-hover" type="button" onclick="redirectToShowDrug()">Show Drugs</button> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="./src/connect.js"></script>
+    <script src="./src/createDrug.js"></script>
+    <script>
+        // Ensure that Web3 is defined before calling connectContract
+        if (typeof window.web3 === 'undefined') {
+            throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+        }
+
+        // Ensure that connectContract is called after Web3 is defined
+        window.addEventListener('DOMContentLoaded', (event) => {
+            connectContract();
+        });
+    </script>
+</body>
+</html>
