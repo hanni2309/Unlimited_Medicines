@@ -1,4 +1,3 @@
-<!-- showDrug.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +11,10 @@
     <title>Show Drugs</title>
 </head>
 <body>
-    <h1>Show Drugs</h1>
-
     <div>
-        <h2>All Drugs</h2>
-        <button onclick="getAllDrugs()">Get All Drugs</button>
-        <ul id="allDrugsList"></ul>
+        <h2>All Drugs with Update Button</h2>
+        <button onclick="getAllDrugsWithUpdate()">Get All Drugs with Update Button</button>
+        <ul id="allDrugsWithUpdateList"></ul>
     </div>
 
     <div>
@@ -25,23 +22,83 @@
         <label for="drugId">Enter Drug ID:</label>
         <input type="number" id="drugId" name="drugId" required>
         <button onclick="getDrugById()">Get Drug by ID</button>
-        <p id="singleDrugInfo"></p>
+        <div id="singleDrugInfoContainer"></div>
     </div>
 
     <div>
-        <h2>Drugs by Classification</h2>
-        <label for="classification">Enter Classification:</label>
-        <input type="text" id="classification" name="classification" required>
-        <button onclick="getDrugsByClassification()">Get Drugs by Classification</button>
-        <ul id="classificationDrugsList"></ul>
+        <h2>Delete Drug by ID</h2>
+        <label for="drugIdToDelete">Enter Drug ID to Delete:</label>
+        <input type="number" id="drugIdToDelete" name="drugIdToDelete" required>
+        <button onclick="deleteDrugById()">Delete Drug by ID</button>
     </div>
   
     <script>
+        async function getDrugById() {
+        const drugId = document.getElementById('drugId').value;
+        try {
+            // Gọi hàm getDrug từ smart contract và hiển thị thông tin drug
+            const drug = await window.contract.methods.getDrug(drugId).call({ from: window.ethereum.selectedAddress });
+            displaySingleDrug("singleDrugInfoContainer", drug);
+        } catch (error) {
+            console.error('Error getting drug by ID:', error);
+        }
+    }
+
+        function displaySingleDrug(elementId, drug) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = "";
+
+            const drugInfo = document.createElement("p");
+            drugInfo.textContent = JSON.stringify(drug);
+            container.appendChild(drugInfo);
+
+            // Thêm button "Update Drug"
+            const updateButton = document.createElement("button");
+            updateButton.textContent = "Update Drug";
+            updateButton.onclick = function () {
+                redirectToUpdateDrug(drug);
+            };
+            container.appendChild(updateButton);
+        }
+
+        async function getAllDrugsWithUpdate() {
+            try {
+                const allDrugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
+                displayDrugsWithUpdate("allDrugsWithUpdateList", allDrugs);
+            } catch (error) {
+                console.error('Error getting all drugs with update button:', error);
+            }
+        }
+
         // Ensure that connectContract is called before loading drugs
         window.addEventListener('DOMContentLoaded', async (event) => {
             await connectContract();
-            await loadDrugs(); // Load all drugs initially
+            await getAllDrugsWithUpdate(); // Automatically load all drugs with update button
         });
+
+        function redirectToUpdateDrug(drug) {
+        // Pass the necessary information to updateDrug.html using query parameters
+        const queryParams = `?id=${drug.id}&name=${encodeURIComponent(drug.name)}&classification=${encodeURIComponent(drug.classification)}&expirationDate=${encodeURIComponent(drug.expirationDate)}&productionDate=${encodeURIComponent(drug.productionDate)}&quantity=${encodeURIComponent(drug.quantity)}&location=${encodeURIComponent(drug.location)}&batchNumber=${encodeURIComponent(drug.batchNumber)}&ingredients=${encodeURIComponent(drug.ingredients)}&status=${drug.status}`;
+
+        window.location.href = `updateDrug.html${queryParams}`;
+        }
+  
+
+        function addUpdateButton(drug) {
+            const updateButton = document.createElement("button");
+            updateButton.textContent = "Update";
+            updateButton.onclick = function () {
+                redirectToUpdateDrug(drug);
+            };
+
+            const listItem = document.createElement("li");
+            listItem.textContent = JSON.stringify(drug);
+            listItem.appendChild(updateButton);
+
+            document.getElementById("allDrugsWithUpdateList").appendChild(listItem);
+        }
+
+       
     </script>
 </body>
 </html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="./src/connect.js"></script>
+    <script src="./src/update.js"></script>
+    <link rel="icon" href="data:,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Drug</title>
+</head>
+<body>
+    <h1>Update Drug</h1>
+
+    <div>
+        <label for="drugId">Drug ID:</label>
+        <input type="number" id="drugId" name="drugId" value="" disabled>
+    </div>
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="">
+    </div>
+
+    <div>
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" name="classification" value="">
+    </div>
+
+    <div>
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" name="expirationDate" value="">
+    </div>
+
+    <div>
+        <label for="productionDate">Production Date:</label>
+        <input type="text" id="productionDate" required><br>
+    </div>
+
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" required><br>
+    </div>
+
+    <div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" required><br>
+    </div>
+
+    <div>
+        <label for="batchNumber">Batch Number:</label>
+        <input type="text" id="batchNumber" required><br>
+    </div>
+
+    <div>
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" required><br>
+    </div>
+
+    <div>
+        <label for="status">Status:</label>
+        <input type="checkbox" id="status"><br>
+    </div>
+
+    <div>
+        <button onclick="updateDrug()">Update Drug</button>
+    </div>
+
+    <script>
+        function populateUpdateForm() {
+            const queryParams = new URLSearchParams(window.location.search);
+
+            // Get values from query parameters
+            const drugId = queryParams.get("id");
+            const name = decodeURIComponent(queryParams.get("name"));
+            const classification = decodeURIComponent(queryParams.get("classification"));
+            const expirationDate = decodeURIComponent(queryParams.get("expirationDate"));
+            const productionDate = decodeURIComponent(queryParams.get("productionDate"));
+            const quantity = decodeURIComponent(queryParams.get("quantity"));
+            const location = decodeURIComponent(queryParams.get("location"));
+            const batchNumber = decodeURIComponent(queryParams.get("batchNumber"));
+            const ingredients = decodeURIComponent(queryParams.get("ingredients"));
+            const status = queryParams.get("status") === "true";
+
+            console.log("Retrieved value: ", {drugId,name,classification,expirationDate,productionDate,quantity,location,batchNumber,ingredients,status});
+
+            // Fill form fields with old information
+            document.getElementById("drugId").value = drugId;
+            document.getElementById("name").value = name;
+            document.getElementById("classification").value = classification;
+            document.getElementById("expirationDate").value = expirationDate;
+            document.getElementById("productionDate").value = productionDate;
+            document.getElementById("quantity").value = quantity;
+            document.getElementById("location").value = location;
+            document.getElementById("batchNumber").value = batchNumber;
+            document.getElementById("ingredients").value = ingredients;
+            document.getElementById("status").checked = status;
+        }
+
+        window.addEventListener('DOMContentLoaded', async (event) => {
+            console.log('DOMContentLoaded event fired.');
+            await connectContractForUpdate();
+            populateUpdateForm();
+        });
+    </script>
+</body>
+</html>
