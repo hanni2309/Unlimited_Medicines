@@ -505,3 +505,5 @@ const connectContract = async () => {
   document.getElementById("contractArea").innerHTML = "connected to smart contract";
   redirectToCreateDrug();
 }
+
+export {ABI, Address} ;
