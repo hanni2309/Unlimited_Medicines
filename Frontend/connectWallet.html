@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medicine</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+  <script type="module" src="main.js"></script>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -55,12 +57,15 @@
         <img style="width:100px; height:100px;" src="./css/Unlimited_MEDICINÉ-removebg.png" alt="">
       </div>
     
-      <button class="btn-wallet">
+      <button class="btn-wallet" onclick="connectMetamask()">
         <a href="#">Connect Wallet</a>
+        
       </button>
+      <div>
+       
     </div>
    </div>
-
+   <script src="../js/connectMetamask.js"></script>
   
 </body>
 </html>

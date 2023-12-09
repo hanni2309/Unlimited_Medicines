@@ -1,204 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../js/connectMetamask.js">
 
 
   <title>Document</title>
+  <link rel="stylesheet" href="./css/wallet.css">
 
-  <style>
-    *{
-      padding:0;
-      margin: 0;
-    }
-    header {
-      text-align: right;
-      padding: 20px ;
-      background-color: antiquewhite;
-      justify-content: center;
-    }
+  <!-- <script>
+    const { connectContract } = require('../js/connectContract.js');
 
-  
-    .menu-action-contract {
-      display: grid;
-      grid-template-columns: 30% 70%;
-      line-height: 1.5;
-    }
-    .menu-action-contract ul {
-      list-style: none;
-    }
-
-    .menu-action-contract ul li {
-      margin: 20px;
-      display: flex;
-    }
-    .menu-action-contract ul li a {
-      text-decoration: none;
-      display: block;
-      width: 100%;
-    }
-
-    .menu-action-contract ul li a:hover {
-      background-color: aqua;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-  }
-
-  th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-  }
-
-  th {
-      background-color: #f2f2f2;
-  }
-
-  select {
-      padding: 8px;
-      font-size: 16px;
-      margin-right: 10px;
-  }
-
-  input[type="text"] {
-      padding: 8px;
-      font-size: 16px;
-      margin-bottom: 10px;
-  }
-
-  .task-view {
-    display: flex;
-  }
-
-  .modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    z-index: 1;
-}
-  </style>
+// Sau đó, bạn có thể sử dụng connectC       
+connectContract();
+  </script> -->
+  <script type="module" src="main.js"></script>
+  <script src="../js/connectMetamask.js"></script>
+  <script src="../js/connectContract.js"></script>
 </head>
-  
+
 <body>
+
   <header>
     <span>Your Wallet : </span>
-    <label  id="accountArea" for=""></label>
+    <label id="accountArea" for=""></label>
     <!-- <button onclick="disconnectMetamask()" >disconnect Metamask</button>
     <script src="../js/disconnectMetamask.js"></script> -->
   </header>
   <div class="task-view">
     <div>
-      <button onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
-    <p id="contractArea"></p>
+      <button  onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
+      <p id="contractArea"></p>
+    </div>
+    
+    <script>
+      // Function to create a new drug
+
+
+
+      function showForm() {
+        var addForm = document.getElementById("addForm");
+        addForm.style.display = "block";
+
+      }
+
+      function toggleSubMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("showSubMenu");
+      }
+    </script>
+    <script src="./js/connectMetamask.js"></script>
+    <script src="./js/connectContract.js"></script>
+    <title>Unlimited Mediciné</title>
+
+    <div id="menu">
+      <a href="hsb.html" onclick="toggleSubMenu()">Show</a>
+      <div id="subMenu">
+        <a href="#">Get All</a>
+        <a href="#">Get by ID</a>
+      </div>
+      <a href="#" onclick="showForm()">Add</a>
     </div>
 
-    <label for="filter">Filter by:</label>
-    <select id="filter">
-        <option value="all">All</option>
-        <option value="name">Name</option>
-        <option value="age">Age</option>
-        <option value="city">City</option>
-    </select>
 
-    <!-- <input type="text" id="search" placeholder="Search..."> -->
-    <label for="searchId">Enter Drug ID:</label>
-    <input type="text" id="searchId">
-    <button onclick="searchDrug()">Search</button>
+    <!-- Your contract data display goes here -->
+  </div>
+  <div id="content">
 
-    <div id="result"></div>
+    <h1 class="rainbow-hover">UM</h1>
+    <div id="addForm">
+
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Tên thuốc..." required><br>
+
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" placeholder="Phân loại..." required><br>
+
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
+
+        <label for="productionDate">Production Date:</label>
+        <input type="text" id="productionDate" placeholder="Ngày sản xuất..." required><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" placeholder="số lượng..." required><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Vị trí..." required><br>
+
+        <label for="batchNumber">Batch Number:</label>
+        <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
+
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
+
+        <label for="status">Status:</label>
+        <input type="checkbox" placeholder="true or false" id="status"><br>
+      </form>
+      <button class="accept-show" id="createDrug" type="button" onclick="createDrug()">Create Drug</button>
+      <button class="accept-show"id="redirectToShowDrug" type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+    </div>
   </div>
-  
-  <script src="../js/connectContract.js"></script>
-  <div class="menu-action-contract">
-    <ul>
-      <li><a href="#" onclick="showList()">Show List</a></li>
-      <li><a href="#">Add</a></li>
-  </ul>
-  
-  <!-- Modal -->
-  <div id="myModal" class="modal">
-      <h2>List Actions</h2>
-      <button onclick="updateItem()">Update</button>
-      <button onclick="deleteItem()">Delete</button>
-      <button onclick="closeModal()">Close</button>
-  </div>
-  </div>
- 
- 
+  <script src="../js/createDrug.js"></script>
   <script>
-    // Hiển thị modal khi nhấn vào "Show List"
-    function showList() {
-        var modal = document.getElementById('myModal');
-        modal.style.display = 'block';
-    }
-
-    // Đóng modal
-    function closeModal() {
-        var modal = document.getElementById('myModal');
-        modal.style.display = 'none';
-    }
-
-    // Xử lý nút "Update"
-    function updateItem() {
-        console.log('Update item');
-        closeModal(); // Đóng modal sau khi xử lý
-    }
-
-    // Xử lý nút "Delete"
-    function deleteItem() {
-        console.log('Delete item');
-        closeModal(); // Đóng modal sau khi xử lý
-    }
-</script>
-
-    <script>
-        const contractAddress = 'YOUR_CONTRACT_ADDRESS'; // Replace with your smart contract address
-        const abi = [...]; // Replace with your contract ABI
-
-        const web3 = new Web3('YOUR_PROVIDER_URL'); // Replace with your Ethereum node provider URL
-        const contract = new web3.eth.Contract(abi, contractAddress);
-
-        async function searchDrug() {
-            const drugId = document.getElementById('searchId').value;
-            const resultDiv = document.getElementById('result');
-
-            try {
-                // Convert drugId to a BigNumber
-                const drugIdBN = web3.utils.toBN(drugId);
-                
-                const result = await contract.methods.getDrug(drugIdBN).call();
-                resultDiv.innerHTML = `<p>ID: ${result.id}</p>
-                                       <p>Owner: ${result.owner}</p>
-                                       <p>Name: ${result.name}</p>`;
-                // Add other properties as needed
-            } catch (error) {
-                resultDiv.innerHTML = 'Error retrieving drug information.';
-                console.error(error);
-            }
-        }
-    </script>
- <script>
-  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
       // Lấy dữ liệu từ localStorage
       var accountInfo = localStorage.getItem('connectedAccount');
-  
+
       // Kiểm tra xem có dữ liệu hay không
       if (accountInfo) {
-          // Đặt nội dung vào thẻ <p>
-          document.getElementById('accountArea').innerHTML = accountInfo;
+        // Đặt nội dung vào thẻ <p>
+        document.getElementById('accountArea').innerHTML = accountInfo;
       }
-  });
+    });
   </script>
- 
+
 </body>
+
 </html>
