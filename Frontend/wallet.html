@@ -10,15 +10,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/wallet.css">
 
-  <!-- <script>
-    const { connectContract } = require('../js/connectContract.js');
-
-// Sau đó, bạn có thể sử dụng connectC       
-connectContract();
-  </script> -->
-  <script type="module" src="main.js"></script>
-  <script src="../js/connectMetamask.js"></script>
-  <script src="../js/connectContract.js"></script>
+  
 </head>
 
 <body>
@@ -125,7 +117,19 @@ connectContract();
       <button class="accept-show"id="redirectToShowDrug" type="button" onclick="redirectToShowDrug()">Show Drugs</button>
     </div>
   </div>
+  <script src="../js/connectContract.js"></script>
   <script src="../js/createDrug.js"></script>
+  <script>
+      // Ensure that Web3 is defined before calling connectContract
+      if (typeof window.web3 === 'undefined') {
+          throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+      }
+
+      // Ensure that connectContract is called after Web3 is defined
+      window.addEventListener('DOMContentLoaded', (event) => {
+          connectContract();
+      });
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Lấy dữ liệu từ localStorage
