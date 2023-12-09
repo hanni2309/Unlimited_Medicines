@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../js/connectMetamask.js">
+  
 
 
   <title>Document</title>
@@ -34,7 +34,29 @@ connectContract();
       <button  onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
       <p id="contractArea"></p>
     </div>
-    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+   
+    <script src="./js/connectContract.js"></script>
+    <script>
+
+      let account;
+      const connectMetamask = async () => {
+          if(window.ethereum !== "undefined") {
+              const accounts = await ethereum.request({method: "eth_requestAccounts"});
+              account = accounts[0];
+              document.getElementById("accountArea").innerHTML = account;
+          }
+      }
+      // Ensure that Web3 is defined before calling connectContract
+      if (typeof window.web3 === 'undefined') {
+          throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+      }
+
+      // Ensure that connectContract is called after Web3 is defined
+      window.addEventListener('DOMContentLoaded', (event) => {
+          connectContract();
+      });
+  </script>
     <script>
       // Function to create a new drug
 
@@ -51,8 +73,7 @@ connectContract();
         menu.classList.toggle("showSubMenu");
       }
     </script>
-    <script src="./js/connectMetamask.js"></script>
-    <script src="./js/connectContract.js"></script>
+
     <title>Unlimited Mediciné</title>
 
     <div id="menu">
