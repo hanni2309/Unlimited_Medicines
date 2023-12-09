@@ -21,60 +21,6 @@
       <button  onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
       <p id="contractArea"></p>
     </div>
-   
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
-    <script src="./js/connectContract.js"></script>
-    <script src="../js/createDrug.js"></script>
-
-    <script>
-
-      let account;
-      const connectMetamask = async () => {
-          if(window.ethereum !== "undefined") {
-              const accounts = await ethereum.request({method: "eth_requestAccounts"});
-              account = accounts[0];
-              document.getElementById("accountArea").innerHTML = account;
-          }
-      }
-      // Ensure that Web3 is defined before calling connectContract
-      if (typeof window.web3 === 'undefined') {
-          throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
-      }
-
-      // Ensure that connectContract is called after Web3 is defined
-      window.addEventListener('DOMContentLoaded', (event) => {
-          connectContract();
-      });
-  </script>
-    <script>
-      // Function to create a new drug
-
-
-
-      function showForm() {
-        var addForm = document.getElementById("addForm");
-        addForm.style.display = "block";
-
-      }
-
-      function toggleSubMenu() {
-        var menu = document.getElementById("menu");
-        menu.classList.toggle("showSubMenu");
-      }
-    </script>
-
-    <title>Unlimited Mediciné</title>
-
-    <div id="menu">
-      <a href="hsb.html" onclick="toggleSubMenu()">Show</a>
-      <div id="subMenu">
-        <a href="#">Get All</a>
-        <a href="#">Get by ID</a>
-      </div>
-      <a href="#" onclick="showForm()">Add</a>
-    </div>
-
 
     <!-- Your contract data display goes here -->
   </div>
@@ -114,7 +60,9 @@
       <button class="accept-show"id="redirectToShowDrug" type="button" onclick="redirectToShowDrug()">Show Drugs</button>
     </div>
   </div>
- 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+  <script src="../js/connectContract.js"></script>
+  <script src="../js/createDrug.js"></script>
   <script>
       // Ensure that Web3 is defined before calling connectContract
       if (typeof window.web3 === 'undefined') {
@@ -126,6 +74,8 @@
           connectContract();
       });
   </script>
+
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
