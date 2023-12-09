@@ -1,5 +1,4 @@
-//2- connect to smart contract
-// async function connectContract() {
+// connectContract.js
 const connectContract = async () => {
   const ABI = [
     {
@@ -499,8 +498,10 @@ const connectContract = async () => {
     }
   ];
 
-  const Address = "x911921aFDc3D969f4078607c878E69C45AC177A3";
+
+  const Address = "0x911921aFDc3D969f4078607c878E69C45AC177A3";
   window.web3 = await new Web3(window.ethereum);
   window.contract = await new window.web3.eth.Contract(ABI, Address);
   document.getElementById("contractArea").innerHTML = "connected to smart contract";
+  redirectToCreateDrug();
 }

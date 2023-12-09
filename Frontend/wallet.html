@@ -4,13 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-
-
   <title>Document</title>
   <link rel="stylesheet" href="./css/wallet.css">
-
-  
 </head>
 
 <body>
@@ -26,9 +21,12 @@
       <button  onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
       <p id="contractArea"></p>
     </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
    
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <script src="./js/connectContract.js"></script>
+    <script src="../js/createDrug.js"></script>
+
     <script>
 
       let account;
@@ -84,7 +82,6 @@
 
     <h1 class="rainbow-hover">UM</h1>
     <div id="addForm">
-
       <form>
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Tên thuốc..." required><br>
@@ -117,8 +114,7 @@
       <button class="accept-show"id="redirectToShowDrug" type="button" onclick="redirectToShowDrug()">Show Drugs</button>
     </div>
   </div>
-  <script src="../js/connectContract.js"></script>
-  <script src="../js/createDrug.js"></script>
+ 
   <script>
       // Ensure that Web3 is defined before calling connectContract
       if (typeof window.web3 === 'undefined') {
@@ -130,6 +126,7 @@
           connectContract();
       });
   </script>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Lấy dữ liệu từ localStorage
