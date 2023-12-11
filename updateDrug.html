@@ -7,65 +7,61 @@
     <script src="./src/connect.js"></script>
     <script src="./src/update.js"></script>
     <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./Frontend/css/update.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Drug</title>
 </head>
 <body>
+   
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <h1>Update Drug</h1>
-
-    <div>
-        <label for="drugId">Drug ID:</label>
-        <input type="number" id="drugId" name="drugId" value="" disabled>
+    
+    <div id="addForm">
+        <form>
+          <label for="name">Name:</label> <br>
+          <input type="text" id="name" placeholder="Tên thuốc..." required><br>
+  
+          <label for="classification">Classification:</label> <br>
+          <input type="text" id="classification" placeholder="Phân loại..." required><br>
+  
+          <label for="expirationDate">Expiration Date:</label> <br>
+          <input type="text" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
+  
+          <label for="productionDate">Production Date:</label> <br>
+          <input type="text" id="productionDate" placeholder="Ngày sản xuất..." required><br>
+  
+          <label for="quantity">Quantity:</label> <br>
+          <input type="text" id="quantity" placeholder="số lượng..." required><br>
+  
+          <label for="location">Location:</label> <br>
+          <input type="text" id="location" placeholder="Vị trí..." required><br>
+  
+          <label for="batchNumber">Batch Number:</label> <br>
+          <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
+  
+          <label for="ingredients">Ingredients:</label> <br>
+          <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
+  
+          <label for="status">Status:</label> 
+          <input type="checkbox" placeholder="true or false" id="status"><br>
+        </form>
+        <div>
+            <button  class="btn-update" onclick="updateDrug()">Update Drug</button>
+        </div>
+      </div>
     </div>
 
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="">
-    </div>
-
-    <div>
-        <label for="classification">Classification:</label>
-        <input type="text" id="classification" name="classification" value="">
-    </div>
-
-    <div>
-        <label for="expirationDate">Expiration Date:</label>
-        <input type="text" id="expirationDate" name="expirationDate" value="">
-    </div>
-
-    <div>
-        <label for="productionDate">Production Date:</label>
-        <input type="text" id="productionDate" required><br>
-    </div>
-
-    <div>
-        <label for="quantity">Quantity:</label>
-        <input type="text" id="quantity" required><br>
-    </div>
-
-    <div>
-        <label for="location">Location:</label>
-        <input type="text" id="location" required><br>
-    </div>
-
-    <div>
-        <label for="batchNumber">Batch Number:</label>
-        <input type="text" id="batchNumber" required><br>
-    </div>
-
-    <div>
-        <label for="ingredients">Ingredients:</label>
-        <input type="text" id="ingredients" required><br>
-    </div>
-
-    <div>
-        <label for="status">Status:</label>
-        <input type="checkbox" id="status"><br>
-    </div>
-
-    <div>
-        <button onclick="updateDrug()">Update Drug</button>
-    </div>
 
     <script>
         function populateUpdateForm() {
