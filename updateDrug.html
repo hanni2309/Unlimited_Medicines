@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Drug</title>
 </head>
-<body>
+<body  onload="populateUpdateForm()">
     <h1>Update Drug</h1>
 
     <div>
@@ -20,7 +20,7 @@
 
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="">
+        <input type="text" id="name" name="name" value="" disabled>
     </div>
 
     <div>
@@ -67,42 +67,5 @@
         <button onclick="updateDrug()">Update Drug</button>
     </div>
 
-    <script>
-        function populateUpdateForm() {
-            const queryParams = new URLSearchParams(window.location.search);
-
-            // Get values from query parameters
-            const drugId = queryParams.get("id");
-            const name = decodeURIComponent(queryParams.get("name"));
-            const classification = decodeURIComponent(queryParams.get("classification"));
-            const expirationDate = decodeURIComponent(queryParams.get("expirationDate"));
-            const productionDate = decodeURIComponent(queryParams.get("productionDate"));
-            const quantity = decodeURIComponent(queryParams.get("quantity"));
-            const location = decodeURIComponent(queryParams.get("location"));
-            const batchNumber = decodeURIComponent(queryParams.get("batchNumber"));
-            const ingredients = decodeURIComponent(queryParams.get("ingredients"));
-            const status = queryParams.get("status") === "true";
-
-            console.log("Retrieved value: ", {drugId,name,classification,expirationDate,productionDate,quantity,location,batchNumber,ingredients,status});
-
-            // Fill form fields with old information
-            document.getElementById("drugId").value = drugId;
-            document.getElementById("name").value = name;
-            document.getElementById("classification").value = classification;
-            document.getElementById("expirationDate").value = expirationDate;
-            document.getElementById("productionDate").value = productionDate;
-            document.getElementById("quantity").value = quantity;
-            document.getElementById("location").value = location;
-            document.getElementById("batchNumber").value = batchNumber;
-            document.getElementById("ingredients").value = ingredients;
-            document.getElementById("status").checked = status;
-        }
-
-        window.addEventListener('DOMContentLoaded', async (event) => {
-            console.log('DOMContentLoaded event fired.');
-            await connectContractForUpdate();
-            populateUpdateForm();
-        });
-    </script>
 </body>
 </html>
