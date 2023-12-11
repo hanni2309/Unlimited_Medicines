@@ -1,0 +1,104 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: aquamarine;
+}
+
+
+h2 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: grey;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+#find-menu-drug {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+}
+
+.update-drug  {
+  margin: 10px;
+}
+
+
+#allDrugsWithUpdateList li {
+  margin: 10px;
+  border: 1px solid ;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  text-align: left;
+  justify-content: center;
+}
+
+ #singleDrugInfoContainer {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    font-size: 14px;
+    padding: 0px 20px;
+    margin: 0px 20px;
+}
+
+
+
+
+header{
+  margin-top: 10px ;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  border-bottom: #333 0.3px solid;
+}
+
+header div {
+  justify-content: center;
+}
+.menu-nav ul {
+  display: flex;
+  list-style: none;
+  float: right;
+}
+
+.menu-nav ul li {
+  padding: 20px;
+
+}
+.menu-nav  ul li a {
+  padding: 20px;
+  color: blue;
+}
+
+.menu-nav ul li a:hover {
+  background-color: brown;
+}

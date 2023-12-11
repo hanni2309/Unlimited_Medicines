@@ -9,9 +9,7 @@
     <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Drugs</title>
-    <style>
-        
-    </style>
+    <link rel="stylesheet" href="./Frontend/css/show.css">
 </head>
 <body>
     <div>
@@ -34,6 +32,16 @@
         <input type="text" id="classification" name="classification" required>
         <button onclick="getDrugsByClassification()">Filter Drugs</button>
         <ul id="classificationDrugsList"></ul>
+    </div>
+
+
+</div>
+<div id="singleDrugInfoContainer"></div>
+
+    <div class ="update-drug">
+        <h2>All Drugs with Update Button</h2>
+        <button onclick="getAllDrugsWithUpdate()">Get All Drugs with Update Button</button>
+        <ul id="allDrugsWithUpdateList"></ul>
     </div>
   
 </body>

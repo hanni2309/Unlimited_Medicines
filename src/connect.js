@@ -1,3 +1,26 @@
+ // Ensure Web3 is defined before using it
+ if (typeof window.web3 === 'undefined') {
+    throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+}
+
+// 1- connect metamask
+let account;
+const connectMetamask = async () => {
+    if (window.ethereum !== "undefined") {
+        const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+        account = accounts[0];
+        document.getElementById("accountArea").innerHTML = account;
+
+        // Redirect to createDrug.html after successful connection
+       
+    }
+}
+
+// Function to redirect to createDrug.html
+function redirectToCreateDrug() {
+    window.location.href = "createDrug.html";
+}
+
 const connectContract = async () => {
     try {
         const ABI = [
