@@ -9,30 +9,42 @@
     <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Drugs</title>
-    <style>
-        
-    </style>
+    <link rel="stylesheet" href="./Frontend/css/show.css">
 </head>
 <body>
-    <div>
-        <h2>All Drugs with Update Button</h2>
-        <button onclick="getAllDrugsWithUpdate()">Get All Drugs with Update Button</button>
-        <ul id="allDrugsWithUpdateList"></ul>
-    </div>
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
 
-    <div>
-        <h2>Drug by ID</h2>
-        <label for="drugId">Enter Drug ID:</label>
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="find-menu-drug">
+    <div class="get-by-id">
+        <label for="drugId">Enter get Drug  ID:</label>
         <input type="number" id="drugId" name="drugId" required>
         <button onclick="getDrugById()">Get Drug by ID</button>
-        <div id="singleDrugInfoContainer"></div>
+       
     </div>
 
-    <div>
-        <h2>Delete Drug by ID</h2>
+    <div class=" delete-by-id">
         <label for="drugIdToDelete">Enter Drug ID to Delete:</label>
         <input type="number" id="drugIdToDelete" name="drugIdToDelete" required>
         <button onclick="deleteDrugById()">Delete Drug by ID</button>
+    </div>
+
+</div>
+<div id="singleDrugInfoContainer"></div>
+
+    <div class ="update-drug">
+        <h2>All Drugs with Update Button</h2>
+        <button onclick="getAllDrugsWithUpdate()">Get All Drugs with Update Button</button>
+        <ul id="allDrugsWithUpdateList"></ul>
     </div>
   
     <script>
