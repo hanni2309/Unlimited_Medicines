@@ -107,31 +107,29 @@ input[type="text"], input[type="number"], input[type="checkbox"] {
 /* Add more styles as needed */
 
 
-header{
-  margin-top: 10px ;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  border-bottom: #333 0.3px solid;
-}
-
-header div {
-  justify-content: center;
-}
-.menu-nav ul {
+header {
+  background-color: aquamarine;
+  color: lightskyblue;
+  padding: 10px;
   display: flex;
-  list-style: none;
-  float: right;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 
-.menu-nav ul li {
-  padding: 20px;
-
-}
-.menu-nav  ul li a {
-  padding: 20px;
-  color: blue;
+.menu-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-.menu-nav ul li a:hover {
-  background-color: brown;
+.menu-nav li {
+  margin-right: 20px;
+}
+
+.menu-nav a {
+  text-decoration: none;
+  color: lightblue;
+  font-weight: bold;
 }

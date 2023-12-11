@@ -23,7 +23,7 @@ input {
 
 button {
   padding: 10px;
-  background-color: grey;
+  background-color: lightskyblue;
   color: white;
   border: none;
   cursor: pointer;
@@ -31,7 +31,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: lightblue;
 }
 
 ul {
@@ -64,41 +64,69 @@ p {
 }
 
  #singleDrugInfoContainer {
-    display: grid;
-    grid-template-columns: 90% 10%;
-    font-size: 14px;
-    padding: 0px 20px;
-    margin: 0px 20px;
+   display: block;
 }
 
 
 
-
-header{
-  margin-top: 10px ;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  border-bottom: #333 0.3px solid;
-}
-
-header div {
-  justify-content: center;
-}
-.menu-nav ul {
+header {
+  background-color: aquamarine;
+  color: lightskyblue;
+  padding: 10px;
   display: flex;
-  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.menu-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu-nav li {
+  margin-right: 20px;
+}
+
+.menu-nav a {
+  text-decoration: none;
+  color: lightblue;
+  font-weight: bold;
+}
+
+.task-get {
+  display: inline-flex;
+  float: right;
+  margin: 20px;
+}
+
+.task-get div {
+  margin-right: 20px ;
+}
+
+
+#singleDrugInfoContainer,
+#classificationDrugsList,
+#allDrugsList {
+    margin-top: 20px;
+}
+
+#allDrugsList {
+  margin-top: 60px;
+  border: 1px black solid;
+  
+}
+
+#allDrugsList li {
+  display: grid;
+  grid-template-columns: 90% 5% 5%;
+  margin: 5px;
+}
+
+#allDrugsList button {
   float: right;
 }
 
-.menu-nav ul li {
-  padding: 20px;
 
-}
-.menu-nav  ul li a {
-  padding: 20px;
-  color: blue;
-}
-
-.menu-nav ul li a:hover {
-  background-color: brown;
-}

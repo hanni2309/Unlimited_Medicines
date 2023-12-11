@@ -12,29 +12,45 @@
     <link rel="stylesheet" href="./Frontend/css/show.css">
 </head>
 <body>
-    <div>
-        <h2>Show Drugs</h2>
-        
-        <!-- Display All Drugs -->
-        <button onclick="getAllDrugs()">Show All Drugs</button>
-        <ul id="allDrugsList"></ul>
-        
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class = "task-get">
         <!-- Display Drug by ID -->
-        <h3>Display Drug by ID</h3>
-        <label for="drugId">Enter Drug ID:</label>
+        <div>
+        <!-- <label for="drugId"></label> -->
         <input type="number" id="drugId" name="drugId" required>
         <button onclick="getDrugById()">Get Drug by ID</button>
-        <div id="singleDrugInfoContainer"></div>
-        
+        </div>
+
+        <div>
         <!-- Filter Drugs by Classification -->
-        <h3>Filter Drugs by Classification</h3>
-        <label for="classification">Enter Classification:</label>
+        <!-- <label for="classification"></label> -->
         <input type="text" id="classification" name="classification" required>
         <button onclick="getDrugsByClassification()">Filter Drugs</button>
-        <ul id="classificationDrugsList"></ul>
+       
+        </div>
+
+        <div>
+          <!-- Display All Drugs -->
+          <button onclick="getAllDrugs()">Show All Drugs</button>
+         
+        </div>
     </div>
 
-
+<div>
+    <div id="singleDrugInfoContainer"></div> 
+    <ul id="classificationDrugsList"></ul>
+    <ul id="allDrugsList"></ul>
 </div>
 <div id="singleDrugInfoContainer"></div>
 
