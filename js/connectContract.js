@@ -506,4 +506,4 @@ const connectContract = async () => {
   redirectToCreateDrug();
 }
 
-export {ABI, Address} ;
+// export {ABI, Address} ;

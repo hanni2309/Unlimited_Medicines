@@ -1,78 +1,124 @@
-*{
-  padding:0;
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: aquamarine;
   margin: 0;
+  padding: 0;
 }
+
 header {
-  text-align: right;
-  padding: 20px ;
-  background-color: antiquewhite;
-  justify-content: center;
+  background-color: aquamarine;
+  color: lightskyblue;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 
-
-.menu-action-contract {
-  display: grid;
-  grid-template-columns: 30% 70%;
-  line-height: 1.5;
-}
-.menu-action-contract ul {
-  list-style: none;
-}
-
-.menu-action-contract ul li {
-  margin: 20px;
+.menu-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: flex;
 }
-.menu-action-contract ul li a {
+
+.menu-nav li {
+  margin-right: 20px;
+}
+
+.menu-nav a {
   text-decoration: none;
-  display: block;
-  width: 100%;
+  color: lightblue;
+  font-weight: bold;
 }
 
-.menu-action-contract ul li a:hover {
-  background-color: aqua;
+#respon-wallet {
+  text-align: center;
+  margin: 20px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-select {
-  padding: 8px;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  padding: 8px;
-  font-size: 16px;
-  margin-bottom: 10px;
+#respon-wallet span {
+  font-weight: bold;
 }
 
 .task-view {
-display: flex;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
 }
 
-.modal {
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-padding: 20px;
-background-color: #fff;
-border: 1px solid #ccc;
-z-index: 1;
+.task-view:hover {
+  transform: scale(1.05);
+  background-color: #e0e0e0; /* Change to the desired hover background color */
+  
+}
+
+
+.task-view div  {
+  display: flex;
+}
+
+.task-view div button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.task-view div p {
+  margin-left: 20px;
+}
+button {
+  background-color: lightskyblue;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lightblue;
+}
+
+#contractArea {
+  margin-top: 10px;
+}
+
+
+.bubble {
+  width: 20px;
+  height: 20px;
+  background-color: #3498db; /* Màu của bóng */
+  position: absolute;
+  border-radius: 50%;
+  left :-30px;
+  z-index: -1;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-200px);
+    opacity: 0.5;
+  }
+  70% {
+    transform: translateY(-270px);
+    opacity: 0.3;
+  }
+  90% {
+    transform: translateY(-360px);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-400px);
+    opacity: 0;
+  }
 }

@@ -6,63 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./css/wallet.css">
+
 </head>
 
 <body>
+  <header> <div><img style="width:70px; height:70px" src="./css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
 
-  <header>
+    <nav class ="menu-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Document</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+  <div id = "respon-wallet">
     <span>Your Wallet : </span>
     <label id="accountArea" for=""></label>
     <!-- <button onclick="disconnectMetamask()" >disconnect Metamask</button>
     <script src="../js/disconnectMetamask.js"></script> -->
-  </header>
+  </div>
   <div class="task-view">
     <div>
-      <button  onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
+      <button  onclick="connectContract()">CONNECT TO CONTRACT</button> 
       <p id="contractArea"></p>
     </div>
-
-    <!-- Your contract data display goes here -->
   </div>
-  <div id="content">
 
-    <h1 class="rainbow-hover">UM</h1>
-    <div id="addForm">
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Tên thuốc..." required><br>
-
-        <label for="classification">Classification:</label>
-        <input type="text" id="classification" placeholder="Phân loại..." required><br>
-
-        <label for="expirationDate">Expiration Date:</label>
-        <input type="text" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
-
-        <label for="productionDate">Production Date:</label>
-        <input type="text" id="productionDate" placeholder="Ngày sản xuất..." required><br>
-
-        <label for="quantity">Quantity:</label>
-        <input type="text" id="quantity" placeholder="số lượng..." required><br>
-
-        <label for="location">Location:</label>
-        <input type="text" id="location" placeholder="Vị trí..." required><br>
-
-        <label for="batchNumber">Batch Number:</label>
-        <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
-
-        <label for="ingredients">Ingredients:</label>
-        <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
-
-        <label for="status">Status:</label>
-        <input type="checkbox" placeholder="true or false" id="status"><br>
-      </form>
-      <button class="accept-show" id="createDrug" type="button" onclick="createDrug()">Create Drug</button>
-      <button class="accept-show"id="redirectToShowDrug" type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+  <div class="task-view">
+    <div>
+      <button><a href="./showDrug.html">SHOW</a></button> <br>
+      <p> come to show Drug</p>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
-  <script src="../js/connectContract.js"></script>
-  <script src="../js/createDrug.js"></script>
+
+  <div class="task-view">
+    <div>
+      <buttoN><a href="./updateDrug.html">ADD</a></button> <br>
+        <p> come to add Drug</p>
+    </div>
+  </div>
+
+
+
   <script>
       // Ensure that Web3 is defined before calling connectContract
       if (typeof window.web3 === 'undefined') {
@@ -74,6 +62,11 @@
           connectContract();
       });
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+  <script src="../js/connectMetamask.js"></script>
+  <script src="../js/connectContract.js"></script>
+  <script src="../js/createDrug.js"></script>
 
 
 
@@ -88,6 +81,39 @@
         document.getElementById('accountArea').innerHTML = accountInfo;
       }
     });
+  </script>
+
+  <div class="bubble"></div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      createBubbles();
+    });
+    
+    function createBubbles() {
+      for (let i = 0; i < 7; i++) { // Thay đổi số lượng bóng nổ ở đây
+        createBubble();
+      }
+    }
+    
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      document.body.appendChild(bubble);
+    
+      const xPos = Math.random() * window.innerWidth;
+      const duration = Math.random() * 10 + 8;
+    
+      bubble.style.left = `${xPos}px`;
+      bubble.style.animation = `floatUp ${duration}s ease-out`;
+    
+      bubble.addEventListener("animationend", function () {
+        bubble.remove();
+        createBubble();
+      });
+    }
+    
+    
   </script>
 
 </body>
