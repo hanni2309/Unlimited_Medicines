@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: aquamarine;
+  background-color: #092635;
 }
 
 .wallet-site {
@@ -23,17 +23,15 @@
 .menu-wallet ul {
   list-style: none;
 }
-.menu-wallet ul li{
-  margin: 10px;
-}
 
 .menu-wallet ul li a {
-  padding : 20px ;
+
   text-decoration: none;
 }
 
+
 .menu-wallet ul li a:hover {
-  background-color: aqua;
+  background-color: #1B4242;
 }
 
 .btn-wallet {
@@ -47,7 +45,7 @@
 }
 .btn-wallet{
   border: none;
-  background-color: aquamarine;
+  background-color: #092635;
 }
 
 .btn-wallet a{
