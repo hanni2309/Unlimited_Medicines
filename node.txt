@@ -1,0 +1,15 @@
+1. hiển thị phân loại theo kiểu option để khi click vào sẽ hiển thị drug theo kiểu phân loại đó.
+2. mặc định cho mỗi drug sẽ có một button update và delete ở table hiển thị drug.
+3. khi xóa thì drug sẽ biến mất (thu gọn độ dài) và không xuất hiện lại ở show drug.
+4. hiển thị thêm địa chỉ ví của người nhập trong table ở showDrug.html.
+5. hiển thị thông tin của drug khi nhấn vào update ở mỗi label.
+6. sửa lại phần Get Drug by ID có ô nhập để hiển thị.
+7. chỉnh lại khi nhấn vào trang showDrug.html thì sẽ mặc định hiển thị theo kiểu Show All Drugs.
+8. trên thanh chọn ở trang showDrug.html khi nhấn vào Get Drug by ID, Filter Drugs thì sẽ load lại hiển thị theo kiểu của button đấy chứ k hiển thị hết các drug.
+9. nghiên cứu đăng nhập/đăng kí để liên kết thêm.
+10. 
+11.
+12.
+13.
+14.
+15.
