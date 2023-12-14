@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: aquamarine;
+  background-color: rgb(20, 206, 144);
 }
 
 
@@ -59,7 +59,7 @@ p {
   border: 1px solid ;
   display: grid;
   grid-template-columns: 90% 10%;
-  text-align: left;
+  
   justify-content: center;
 }
 

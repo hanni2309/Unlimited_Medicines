@@ -69,7 +69,7 @@ async function deleteDrugById(drugId) {
         alert('Error deleting drug. See console for details.');
     }
 }
-
+    //tìm kiếm theo id
 async function getDrugById() {
     const drugId = document.getElementById('drugId').value;
     try {
@@ -81,7 +81,7 @@ async function getDrugById() {
     }
 }
 
-
+// Tìm kiếm theo phân loại
 async function getDrugsByClassification() {
     const enteredClassification = document.getElementById('classification').value;
     try {
