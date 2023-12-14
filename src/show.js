@@ -1,3 +1,32 @@
+// JavaScript function to fetch data and update the table
+async function getData(elementId, functionName) {
+    try {
+        const data = await fetchDataFromContract(functionName);
+        displayDataInTable(elementId, data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// JavaScript function to fetch data from the contract (implement your logic)
+async function fetchDataFromContract(functionName) {
+    try {
+        let data;
+        if (functionName === 'getAllDrugs') {
+            data = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
+        } else if (functionName === 'getDrugById') {
+            const drugId = document.getElementById('drugId').value;
+            data = await window.contract.methods.getDrug(drugId).call({ from: window.ethereum.selectedAddress });
+        } else if (functionName === 'getDrugsByClassification') {
+            const enteredClassification = document.getElementById('classification').value;
+            data = await window.contract.methods.getDrugsByClassification(enteredClassification).call({ from: window.ethereum.selectedAddress });
+        }
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
 async function getAllDrugs() {
     try {
         const allDrugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
@@ -69,7 +98,12 @@ async function deleteDrugById(drugId) {
         alert('Error deleting drug. See console for details.');
     }
 }
+<<<<<<< HEAD
     //tìm kiếm theo id
+=======
+
+
+>>>>>>> b75c37eab5282a9f52a5c09369ef682d9d71e3c8
 async function getDrugById() {
     const drugId = document.getElementById('drugId').value;
     try {
@@ -99,7 +133,6 @@ function redirectToUpdateDrug(id, name, classification) {
  
 }
 
-
 function buildQueryParams(drug) {
     let queryParams = `?id=${drug.id}&name=${encodeURIComponent(drug.name)}&classification=${encodeURIComponent(drug.classification)}`;
     queryParams += `&expirationDate=${encodeURIComponent(drug.expirationDate)}`;
@@ -112,3 +145,4 @@ function buildQueryParams(drug) {
 
     return queryParams;
 }
+

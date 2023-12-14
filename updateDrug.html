@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,5 +62,73 @@
         </div>
     </div>
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Drug</title>
+</head>
+<body>
+    <form>
+        <label for="drugId">Drug ID:</label>
+        <input type="number" id="drugId" name="drugId" value="" disabled><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" required><br>
+
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" required><br>
+
+        <label for="productionDate">Production Date:</label>
+        <input type="text" id="productionDate" required><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" required><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" required><br>
+
+        <label for="batchNumber">Batch Number:</label>
+        <input type="text" id="batchNumber" required><br>
+
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" required><br>
+
+        <label for="status">Status:</label>
+        <input type="checkbox" id="status"><br>
+    </form>
+
+    <button type="button" onclick="updateDrug()">Update Drug</button>
+    <button type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="./src/connect.js"></script>
+    <script src="./src/update.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', async (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const drugId = urlParams.get('id');
+            if (drugId) {
+                const drug = await getDrugById(drugId);
+                if (drug) {
+                    populateUpdateForm(drug);
+                } else {
+                    console.error("Drug not found.");
+                    // Xử lý trường hợp khi không tìm thấy thuốc.
+                }
+            } else {
+                console.error("No drug ID specified.");
+                // Xử lý trường hợp khi không có ID thuốc được chỉ định (ví dụ: hiển thị thông báo lỗi).
+            }
+        });
+    </script>
 </body>
 </html>
