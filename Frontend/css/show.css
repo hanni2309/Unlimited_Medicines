@@ -3,12 +3,13 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: aquamarine;
+  background-color: #092635;
+  color: #fff;
 }
 
 
 h2 {
-  color: #333;
+  color:#9EC8B9;
 }
 
 label {
@@ -22,7 +23,6 @@ input {
 }
 
 button {
-  padding: 10px;
   background-color: lightskyblue;
   color: white;
   border: none;
@@ -70,8 +70,8 @@ p {
 
 
 header {
-  background-color: aquamarine;
-  color: lightskyblue;
+ 
+  color: #5C8374;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -94,6 +94,20 @@ header {
   text-decoration: none;
   color: lightblue;
   font-weight: bold;
+}
+
+.taskbar {
+  
+  display: flex;
+  margin-top:20px;
+  
+  justify-content: right;
+}
+
+.taskbar button {
+  margin:0px 20px;
+  width: 120px;
+  height: 30px;
 }
 
 .task-get {
@@ -129,4 +143,69 @@ header {
   float: right;
 }
 
+table {
+  font-size: small;
+  border-collapse: collapse;
+  text-align: center;
+  justify-content: center;
+}
+th, td {
+  padding: 5px;
+  border: 1px white solid;
+  text-align: center;
+  justify-content: center;
+}
+
+#drugInfo {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+body {
+  margin-left: 220px; /* Chiều rộng của <aside> + khoảng trắng phụ */
+  transition: margin-left 0.3s ease;
+}
+
+aside {
+  background-color: #1B4242;
+  padding: 10px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #2c3e50;
+}
+
+
+form {
+  text-align: center;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 

@@ -4,42 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Frontend/css/show.css">
     <title>Create Drug</title>
 </head>
 <!-- Giao diện cho createDrug.html -->
 <body>
+
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside>
+        <nav>
+          <a href="showDrug.html">Show</a>
+          <a href="createDrug.html">Add</a>
+        </nav>
+      </aside>
+
     <form>
         <label for="name">Name:</label>
-        <input type="text" id="name" required><br>
+        <input type="text" id="name" placeholder="Tên thuốc..." required><br>
     
         <label for="classification">Classification:</label>
-        <input type="text" id="classification" required><br>
+        <input type="text" id="classification" placeholder="Phân loại..." required><br>
     
         <label for="expirationDate">Expiration Date:</label>
-        <input type="text" id="expirationDate" required><br>
+        <input type="text" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
     
         <label for="productionDate">Production Date:</label>
-        <input type="text" id="productionDate" required><br>
+        <input type="text" id="productionDate" placeholder="Ngày sản xuất..." required><br>
     
         <label for="quantity">Quantity:</label>
-        <input type="text" id="quantity" required><br>
+        <input type="text" id="quantity" placeholder="số lượng..." required><br>
     
         <label for="location">Location:</label>
-        <input type="text" id="location" required><br>
+        <input type="text" id="location" placeholder="Vị trí..." required><br>
     
         <label for="batchNumber">Batch Number:</label>
-        <input type="text" id="batchNumber" required><br>
+        <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
     
         <label for="ingredients">Ingredients:</label>
-        <input type="text" id="ingredients" required><br>
+        <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
     
         <label for="status">Status:</label>
-        <input type="checkbox" id="status"><br>
+        <input type="checkbox" placeholder="true or false" id="status"><br>
     </form>
-    <button type="button" onclick="createDrug()">Create Drug</button>
-    <button type="button" onclick="redirectToShowDrug()">Show Drugs</button> 
+    <button class="rainbow-hover" type="button" onclick="createDrug()">Create Drug</button>
+    <button class="rainbow-hover" type="button" onclick="redirectToShowDrug()">Show Drugs</button> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <script src="./src/connect.js"></script>
     <script src="./src/createDrug.js"></script>
+    <script>
+        // Ensure that Web3 is defined before calling connectContract
+        if (typeof window.web3 === 'undefined') {
+            throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+        }
+
+        // Ensure that connectContract is called after Web3 is defined
+        window.addEventListener('DOMContentLoaded', (event) => {
+            connectContract();
+        });
+    </script>
 </body>
 </html>

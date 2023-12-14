@@ -4,18 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Frontend/css/show.css">
     <title>Show Drugs</title>
 </head>
-<body>
-    <h1>Drug Information</h1>
+<body onload ="getAllDrugs()" onload="displayDrugTable()">
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
 
-    <button onclick="getAllDrugs()">Show All Drugs</button>
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside>
+        <nav>
+          <a href="showDrug.html">Show</a>
+          <a href="createDrug.html">Add</a>
+        </nav>
+      </aside>
+
+    <div class="taskbar">
+
+    
+    <!-- <button onclick="getAllDrugs()">Show All Drugs</button> -->
     <button onclick="getDrugsByClassification()">Show Drugs by Classification</button>
    
-    <label for="drugId">Enter Drug ID:</label>
+    <!-- <label for="drugId">Enter Drug ID:</label> -->
     <input type="text" id="drugId">
-    <button onclick="getDrugById()">Get Drug by ID</button>
-
+    <button onclick="getDrugById()  ">Get Drug by ID</button>
+</div>
 <div id="drugInfo"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <script src="./src/connect.js"></script>
@@ -72,7 +93,7 @@
         function displaySingleDrug(drug) {
     const drugInfoDiv = document.getElementById("drugInfo");
     drugInfoDiv.innerHTML = `
-        <h2>Drug Information</h2>
+        
         <table>
             <tr>
                 <th>ID</th>
