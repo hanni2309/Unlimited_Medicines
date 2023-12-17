@@ -189,6 +189,7 @@
             `;
 
             for (const drug of drugs) {
+                if (drug.id > 0) {
                 const row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${drug.id}</td>
@@ -208,11 +209,14 @@
                 `;
                 drugTable.appendChild(row);
             }
+        }
 
             const drugInfoDiv = document.getElementById("drugInfo");
             drugInfoDiv.innerHTML = "";
             drugInfoDiv.appendChild(drugTable);
         }
+
+       
 
         // Function to delete a drug by its ID
         async function deleteDrug(drugId) {
