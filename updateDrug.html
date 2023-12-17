@@ -1,70 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
-    <script src="./src/connect.js"></script>
-    <script src="./src/update.js"></script>
-    <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="./Frontend/css/update.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPDATE DRUG</title>
-</head>
-<header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
-
-    <nav class ="menu-nav">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Product</a></li>
-            <li><a href="#">Document</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
-</header>
-<body onload="populateUpdateForm()">
-    <h1>Update Drug</h1>
-
-    <div id="addForm">
-        <form>
-        <label for="drugId">Drug ID:</label>
-        <input type="number" id="drugId" name="drugId" value="" disabled>
-
-          <label for="name">Name:</label> <br>
-          <input type="text" id="name" placeholder="Tên thuốc..." required><br>
-
-          <label for="classification">Classification:</label> <br>
-          <input type="text" id="classification" placeholder="Phân loại..." required><br>
-
-          <label for="expirationDate">Expiration Date:</label> <br>
-          <input type="text" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
-
-          <label for="productionDate">Production Date:</label> <br>
-          <input type="text" id="productionDate" placeholder="Ngày sản xuất..." required><br>
-
-          <label for="quantity">Quantity:</label> <br>
-          <input type="text" id="quantity" placeholder="số lượng..." required><br>
-
-          <label for="location">Location:</label> <br>
-          <input type="text" id="location" placeholder="Vị trí..." required><br>
-
-          <label for="batchNumber">Batch Number:</label> <br>
-          <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
-
-          <label for="ingredients">Ingredients:</label> <br>
-          <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
-
-          <label for="status">Status:</label>
-          <input type="checkbox" placeholder="true or false" id="status"><br>
-        </form>
-        <div>
-            <button class="btn-update" onclick="updateDrug()">Update Drug</button>
-        </div>
-    </div>
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,10 +12,10 @@
         <input type="number" id="drugId" name="drugId" value="" disabled><br>
 
         <label for="name">Name:</label>
-        <input type="text" id="name" required><br>
+        <input type="text" id="name" placeholder="Name" required><br>
 
         <label for="classification">Classification:</label>
-        <input type="text" id="classification" required><br>
+        <input type="text" id="classification" placeholder="Classification" required><br>
 
         <label for="expirationDate">Expiration Date:</label>
         <input type="text" id="expirationDate" required><br>
@@ -91,7 +24,7 @@
         <input type="text" id="productionDate" required><br>
 
         <label for="quantity">Quantity:</label>
-        <input type="text" id="quantity" required><br>
+        <input type="text" id="quantity" placeholder="quantity"required><br>
 
         <label for="location">Location:</label>
         <input type="text" id="location" required><br>
@@ -104,31 +37,16 @@
 
         <label for="status">Status:</label>
         <input type="checkbox" id="status"><br>
-    </form>
 
     <button type="button" onclick="updateDrug()">Update Drug</button>
     <button type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+</form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <script src="./src/connect.js"></script>
     <script src="./src/update.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', async (event) => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const drugId = urlParams.get('id');
-            if (drugId) {
-                const drug = await getDrugById(drugId);
-                if (drug) {
-                    populateUpdateForm(drug);
-                } else {
-                    console.error("Drug not found.");
-                    // Xử lý trường hợp khi không tìm thấy thuốc.
-                }
-            } else {
-                console.error("No drug ID specified.");
-                // Xử lý trường hợp khi không có ID thuốc được chỉ định (ví dụ: hiển thị thông báo lỗi).
-            }
-        });
+      
     </script>
 </body>
 </html>
