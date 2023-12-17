@@ -1,148 +1,159 @@
-// JavaScript function to fetch data and update the table
-async function getData(elementId, functionName) {
-    try {
-        const data = await fetchDataFromContract(functionName);
-        displayDataInTable(elementId, data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
 
-// JavaScript function to fetch data from the contract (implement your logic)
-async function fetchDataFromContract(functionName) {
-    try {
-        let data;
-        if (functionName === 'getAllDrugs') {
-            data = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
-        } else if (functionName === 'getDrugById') {
-            const drugId = document.getElementById('drugId').value;
-            data = await window.contract.methods.getDrug(drugId).call({ from: window.ethereum.selectedAddress });
-        } else if (functionName === 'getDrugsByClassification') {
-            const enteredClassification = document.getElementById('classification').value;
-            data = await window.contract.methods.getDrugsByClassification(enteredClassification).call({ from: window.ethereum.selectedAddress });
-        }
-        return data;
-    } catch (error) {
-        throw error;
-    }
-}
-
+//////////
 async function getAllDrugs() {
     try {
-        const allDrugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
-        displayDrugsWithButtons("allDrugsList", allDrugs);
+        if (window.contract) {
+            const drugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
+            displayDrugTable(drugs);
+        } else {
+            console.error("Contract is not properly initialized.");
+        }
     } catch (error) {
-        console.error('Error getting all drugs:', error);
+        console.error("Error fetching drug data:", error);
     }
 }
 
-function displayDrugsWithButtons(elementId, drugs) {
-    const listElement = document.getElementById(elementId);
-    listElement.innerHTML = "";
-
-    drugs.forEach(drug => {
-        const listItem = document.createElement("li");
-        listItem.textContent = JSON.stringify(drug);
-
-        // Add "Delete" button
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.onclick = function () {
-            deleteDrugById(drug.id); // Call the delete function with the drug ID
-        };
-        listItem.appendChild(deleteButton);
-
-        // Add "Update" button
-        const updateButton = document.createElement("button");
-        updateButton.textContent = "Update";
-        updateButton.onclick = function () {
-            redirectToUpdateDrug(drug.id, drug.name, drug.classification); // Call update with drug info
-        };
-        listItem.appendChild(updateButton);
-
-        listElement.appendChild(listItem);
-    });
-    updateButton.onclick = function () {
-    redirectToUpdateDrug(drug);
-};
-}
-
-function displaySingleDrug(elementId, drug) {
-    const container = document.getElementById(elementId);
-    container.innerHTML = "";
-
-    const drugInfo = document.createElement("p");
-    drugInfo.textContent = JSON.stringify(drug);
-    container.appendChild(drugInfo);
-
-    // Thêm button "Update Drug"
-    const updateButton = document.createElement("button");
-    updateButton.textContent = "Update Drug";
-    updateButton.onclick = function () {
-        redirectToUpdateDrug(drug);
-    };
-    container.appendChild(updateButton);
-}
-
-
-async function deleteDrugById(drugId) {
-    try {
-        // Call the smart contract function to delete a drug
-        await window.contract.methods.deleteDrug(drugId).send({ from: window.ethereum.selectedAddress });
-
-        alert('Drug deleted successfully!');
-        // Optionally, you can reload the drugs list after deletion
-        await getAllDrugs();
-    } catch (error) {
-        console.error('Error deleting drug by ID:', error);
-        alert('Error deleting drug. See console for details.');
-    }
-}
-<<<<<<< HEAD
-    //tìm kiếm theo id
-=======
-
-
->>>>>>> b75c37eab5282a9f52a5c09369ef682d9d71e3c8
-async function getDrugById() {
-    const drugId = document.getElementById('drugId').value;
-    try {
-        // Gọi hàm getDrug từ smart contract và hiển thị thông tin drug
-        const drug = await window.contract.methods.getDrug(drugId).call({ from: window.ethereum.selectedAddress });
-        displaySingleDrug("singleDrugInfoContainer", drug);
-    } catch (error) {
-        console.error('Error getting drug by ID:', error);
-    }
-}
-
-// Tìm kiếm theo phân loại
 async function getDrugsByClassification() {
-    const enteredClassification = document.getElementById('classification').value;
     try {
-        const drugsByClass = await window.contract.methods.getDrugsByClassification(enteredClassification).call({ from: window.ethereum.selectedAddress });
-        displayDrugsWithButtons("classificationDrugsList", drugsByClass);
+        if (window.contract) {
+            const classification = prompt("Enter drug classification:");
+            if (classification) {
+                const drugs = await window.contract.methods.getDrugsByClassification(classification).call({ from: window.ethereum.selectedAddress });
+                displayDrugTable(drugs);
+            } else {
+                console.error("Classification input is empty.");
+            }
+        } else {
+            console.error("Contract is not properly initialized.");
+        }
     } catch (error) {
-        console.error('Error getting drugs by classification:', error);
+        console.error("Error fetching drug data by classification:", error);
     }
 }
 
-// lấy thông tin cũ
-function redirectToUpdateDrug(id, name, classification) {
-    const queryParams = buildQueryParams({ id, name, classification });
-    window.location.href = `updateDrug.html${queryParams}`;
- 
+async function getDrugById() {
+    try {
+        if (window.contract) {
+            const drugId = document.getElementById("drugId").value;
+            if (drugId < 1) {
+                const drug = await window.contract.methods.getDrug(drugId).call({ from: window.ethereum.selectedAddress });
+                displaySingleDrug(drug);
+            } else {
+                console.error("Drug ID input is empty.");
+            }
+        } else {
+            console.error("Contract is not properly initialized.");
+        }
+    } catch (error) {
+        console.error("Error fetching drug data by ID:", error);
+    }
 }
 
-function buildQueryParams(drug) {
-    let queryParams = `?id=${drug.id}&name=${encodeURIComponent(drug.name)}&classification=${encodeURIComponent(drug.classification)}`;
-    queryParams += `&expirationDate=${encodeURIComponent(drug.expirationDate)}`;
-    queryParams += `&productionDate=${encodeURIComponent(drug.productionDate)}`;
-    queryParams += `&quantity=${encodeURIComponent(drug.quantity)}`;
-    queryParams += `&location=${encodeURIComponent(drug.location)}`;
-    queryParams += `&batchNumber=${encodeURIComponent(drug.batchNumber)}`;
-    queryParams += `&ingredients=${encodeURIComponent(drug.ingredients)}`;
-    queryParams += `&status=${drug.status}`;
-
-    return queryParams;
+function displaySingleDrug(drug) {
+    const drugInfoDiv = document.getElementById("drugInfo");
+    drugInfoDiv.innerHTML = `
+    <h2>Drug Information</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Classification</th>
+            <th>Expiration Date</th>
+            <th>Production Date</th>
+            <th>Quantity</th>
+            <th>Location</th>
+            <th>Batch Number</th>
+            <th>Ingredients</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>${drug.id}</td>
+            <td>${drug.name}</td>
+            <td>${drug.classification}</td>
+            <td>${drug.expirationDate}</td>
+            <td>${drug.productionDate}</td>
+            <td>${drug.quantity}</td>
+            <td>${drug.location}</td>
+            <td>${drug.batchNumber}</td>
+            <td>${drug.ingredients}</td>
+            <td>${drug.status ? "Available" : "Out of Stock"}</td>
+            <td>
+                <button onclick="redirectToUpdateDrug(${drug.id})">Update</button>
+                <button onclick="deleteDrug(${drug.id})">Delete</button>
+            </td>
+        </tr>
+    </table>
+    `;
 }
 
+function displayDrugTable(drugs) {
+    const drugTable = document.createElement("table");
+    drugTable.innerHTML = `
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Classification</th>
+            <th>Expiration Date</th>
+            <th>Production Date</th>
+            <th>Quantity</th>
+            <th>Location</th>
+            <th>Batch Number</th>
+            <th>Ingredients</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    `;
+
+    for (const drug of drugs) {
+        if (parseInt(drug.id) >= 1) { // Kiểm tra ID của drug, hiển thị nếu ID >= 1
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${drug.id}</td>
+                <td>${drug.name}</td>
+                <td>${drug.classification}</td>
+                <td>${drug.expirationDate}</td>
+                <td>${drug.productionDate}</td>
+                <td>${drug.quantity}</td>
+                <td>${drug.location}</td>
+                <td>${drug.batchNumber}</td>
+                <td>${drug.ingredients}</td>
+                <td>${drug.status ? "Available" : "Out of Stock"}</td>
+                <td>
+                    <button onclick="redirectToUpdateDrug(${drug.id})">Update</button>
+                    <button onclick="deleteDrug(${drug.id})">Delete</button>
+                </td>
+            `;
+            drugTable.appendChild(row);
+        }
+    }
+
+    const drugInfoDiv = document.getElementById("drugInfo");
+    drugInfoDiv.innerHTML = "";
+    drugInfoDiv.appendChild(drugTable);
+}
+
+// Function to delete a drug by its ID
+async function deleteDrug(drugId) {
+    try {
+        if (window.contract) {
+            // Call the deleteDrug function from the smart contract
+            await window.contract.methods.deleteDrug(drugId).send({ from: window.ethereum.selectedAddress });
+
+            // Refresh the drug list after successful deletion
+            displayDrugs();
+
+            // Show a success message (you can customize this)
+            alert("Drug deleted successfully!");
+        } else {
+            console.error("Contract is not properly initialized.");
+        }
+    } catch (error) {
+        console.error("Error deleting drug:", error);
+    }
+}
+
+// chuyển sang trang update tương ứng vs từng drug
+function redirectToUpdateDrug(drugId) {
+    window.location.href = `updateDrug.html?id=${drugId}`;
+}
