@@ -72,38 +72,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Drug</title>
+    <link rel="stylesheet" href="./Frontend/css/show.css">
 </head>
 <body>
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside>
+        <img  style="width:150px ; height:150px; border-bottom: 1px white solid;" src="./Frontend/css/logo.png" alt="">
+        <nav>
+          <a href="showDrug.html">Show</a>
+          <a href="createDrug.html">Add</a>
+        </nav>
+      </aside>
+
     <form>
-        <label for="drugId">Drug ID:</label>
-        <input type="number" id="drugId" name="drugId" value="" disabled><br>
-
         <label for="name">Name:</label>
-        <input type="text" id="name" required><br>
-
+        <input type="text" id="name" placeholder="Tên thuốc..." required><br>
+    
+        <!-- <label for="classification">Classification:</label>
+        <input type="text" id="classification" placeholder="Phân loại..." required><br> -->
+        
         <label for="classification">Classification:</label>
-        <input type="text" id="classification" required><br>
+        <select id="classificationSelect" onchange="updateInput()">
+            <option value="" disabled selected>Select classification...</option>
+            <option value="uses">Theo Mục đích Sử Dụng</option>
+            <option value="medicine form">Theo Dạng Thuốc</option>
+            <option value="Mechanism of Action">Cơ Chế Hoạt Động</option>
+            <option value="Chemistry Group">Theo Nhóm Hoá Học</option>
+            <option value="medicine form">Theo Khu Vực Tác Động</option>
+            <!-- Thêm các option khác nếu cần -->
+        </select>
+
+        <!-- Input ẩn để lưu giữ giá trị được chọn -->
+        <input style="display: none;" type="text" id="classification" name="classification" required>
+
+        <script>
+            function updateInput() {
+                var selectElement = document.getElementById("classificationSelect");
+                var inputElement = document.getElementById("classification");
+
+                // Gán giá trị từ option vào input
+                inputElement.value = selectElement.value;
+            }
+        </script>
 
         <label for="expirationDate">Expiration Date:</label>
-        <input type="text" id="expirationDate" required><br>
-
+        <input type="date" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
+    
         <label for="productionDate">Production Date:</label>
-        <input type="text" id="productionDate" required><br>
-
+        <input type="date" id="productionDate" placeholder="Ngày sản xuất..." required><br>
+    
         <label for="quantity">Quantity:</label>
-        <input type="text" id="quantity" required><br>
-
+        <input type="text" id="quantity" placeholder="số lượng..." required><br>
+    
         <label for="location">Location:</label>
-        <input type="text" id="location" required><br>
-
+        <input type="text" id="location" placeholder="Vị trí..." required><br>
+    
         <label for="batchNumber">Batch Number:</label>
-        <input type="text" id="batchNumber" required><br>
-
+        <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
+    
         <label for="ingredients">Ingredients:</label>
-        <input type="text" id="ingredients" required><br>
-
+        <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
+    
         <label for="status">Status:</label>
-        <input type="checkbox" id="status"><br>
+        <input type="radio" placeholder="true or false" id="status"><br>
     </form>
 
     <button type="button" onclick="updateDrug()">Update Drug</button>
