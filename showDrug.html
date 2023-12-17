@@ -47,9 +47,24 @@
                 }
             };
         </script>
-
+        
+        <div id = "section-option">
+            <select onclick="getDrugsByClassification()" id="classificationSelect" onchange="updateInput()">
+                <option value="" disabled selected>Select classification...</option>
+                <option  value="All">Tất cả</option>
+                <option value="uses">Theo Mục đích Sử Dụng</option>
+                <option value="medicine form">Theo Dạng Thuốc</option>
+                <option value="Mechanism of Action">Cơ Chế Hoạt Động</option>
+                <option value="Chemistry Group">Theo Nhóm Hoá Học</option>
+                <option value="medicine form">Theo Khu Vực Tác Động</option>
+                <!-- Thêm các option khác nếu cần -->
+            </select>
+    
+            <!-- Input ẩn để lưu giữ giá trị được chọn -->
+            <input  style="display:none;" type="text" id="classification" name="classification" readonly required>
+        </div>
         <!-- <button onclick="getAllDrugs()">Show All Drugs</button> -->
-        <button onclick="getDrugsByClassification()">Show Drugs by Classification</button>
+        <!-- <button onclick="getDrugsByClassification()">Show Drugs by Classification</button> -->
 
         <!-- <label for="drugId">Enter Drug ID:</label> -->
         <input type="text" id="drugId">
@@ -72,15 +87,22 @@
             }
         }
 
+      
+
+     
         async function getDrugsByClassification() {
             try {
                 if (window.contract) {
-                    const classification = prompt("Enter drug classification:");
-                    if (classification) {
-                        const drugs = await window.contract.methods.getDrugsByClassification(classification).call({ from: window.ethereum.selectedAddress });
+                    const selectElement = document.getElementById("classificationSelect");
+                    const classification = selectElement.value;
+        
+                    if (classification.toLowerCase() === "all") {
+                        // Nếu là "All", không cần truyền phân loại, hoặc có thể truyền null hoặc một giá trị khác để biểu thị "All"
+                        const drugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
                         displayDrugTable(drugs);
                     } else {
-                        console.error("Classification input is empty.");
+                        const drugs = await window.contract.methods.getDrugsByClassification(classification).call({ from: window.ethereum.selectedAddress });
+                        displayDrugTable(drugs);
                     }
                 } else {
                     console.error("Contract is not properly initialized.");
@@ -89,6 +111,7 @@
                 console.error("Error fetching drug data by classification:", error);
             }
         }
+        
 
         async function getDrugById() {
             try {
@@ -217,6 +240,9 @@
         }
 
     </script>
+
+    
+   
     <footer>
         <div class="footer-container">
           <div class="footer-left">

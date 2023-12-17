@@ -18,10 +18,12 @@ label {
   margin-bottom: 5px;
 }
 
-input {
+input , select{
   padding: 5px;
   margin-bottom: 10px;
 }
+
+
 
 button {
   background-color: lightskyblue;
@@ -164,7 +166,7 @@ header {
 }
 
 table {
-  font-size: small;
+  font-size: medium;
   border-collapse: collapse;
   text-align: center;
   justify-content: center;
@@ -172,6 +174,7 @@ table {
 th, td {
   padding: 5px;
   margin: 0px 10px;
+  border-top: 0.2px white solid;
   border-bottom: 0.2px white solid;
   text-align: center;
   justify-content: center;
@@ -234,16 +237,15 @@ form label {
  padding-left:289px;
 }
 
-form input {
+form input,select {
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-
-form input {
   width: 200px;
   height: 33px;
 }
+
+
+
 
 .rainbow-hover {
   background-color: #9EC8B9;
@@ -313,4 +315,13 @@ footer {
   width: 40px;
   height: 40px;
   /* max-width: 100%; */
+}
+
+
+select,option {
+  z-index: 1000;
+}
+
+#section-option {
+  margin-right: 10px;
 }
