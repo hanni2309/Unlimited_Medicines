@@ -9,14 +9,14 @@
 </head>
 <body>
     <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
-        <nav class ="menu-nav">
+        <nav class="menu-nav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#">Document</a></li>
-                <li><a href="#">About</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="introduce.html">Introduce</a></li>
+              <li><a href="contact.html">Document</a></li>
+              <li><a href="about.html">About</a></li>
             </ul>
-        </nav>
+          </nav>
     </header>
 
     <aside>
@@ -30,9 +30,34 @@
     <form>
         <label for="name">Name:</label>
         <input type="text" id="name" required><br>
+<!-- 
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" required><br> -->
 
         <label for="classification">Classification:</label>
-        <input type="text" id="classification" required><br>
+        <select id="classificationSelect" onchange="updateInput()">
+            <option value="" disabled selected>Select classification...</option>
+            <option value="uses">Theo Mục đích Sử Dụng</option>
+            <option value="medicine form">Theo Dạng Thuốc</option>
+            <option value="Mechanism of Action">Cơ Chế Hoạt Động</option>
+            <option value="Chemistry Group">Theo Nhóm Hoá Học</option>
+            <option value="medicine form">Theo Khu Vực Tác Động</option>
+            <!-- Thêm các option khác nếu cần -->
+        </select>
+
+        <script>
+            function updateInput() {
+                var selectElement = document.getElementById("classificationSelect");
+                var inputElement = document.getElementById("classification");
+      
+                // Gán giá trị từ option vào input
+                inputElement.value = selectElement.value;
+               
+            }
+          </script>
+
+        <!-- Input ẩn để lưu giữ giá trị được chọn -->
+        <input  style="display:none;" type="text" id="classification" name="classification" readonly required>
 
         <label for="expirationDate">Expiration Date:</label>
         <input type="date" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
@@ -57,7 +82,7 @@
     </form>
 
     <button type="button" onclick="updateDrug()">Update Drug</button>
-    <button type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+    <!-- <button type="button" onclick="redirectToShowDrug()">Show Drugs</button> -->
 </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
