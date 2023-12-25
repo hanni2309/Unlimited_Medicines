@@ -1,6 +1,6 @@
-function redirectToUpdateDrug(drugId) {
-    window.location.href = `updateDrug.html?id=${drugId}`;
-}
+// function redirectToUpdateDrug(drugId) {
+//     window.location.href = `updateDrug.html?id=${drugId}`;
+// }
 
 // Function to fetch and display the current drug data before updating
 async function displayCurrentDrugData() {
