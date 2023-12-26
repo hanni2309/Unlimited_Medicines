@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Drug</title>
+    <link rel="stylesheet" href="./Frontend/css/show.css">
+</head>
+<body>
+    <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+        <nav class ="menu-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Document</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside>
+        <img  style="width:150px ; height:150px; border-bottom: 1px white solid;" src="./Frontend/css/logo.png" alt="">
+        <nav>
+          <a href="showDrug.html">Show</a>
+          <a href="createDrug.html">Add</a>
+        </nav>
+      </aside>
+
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" required><br>
+
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="date" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
+    
+        <label for="productionDate">Production Date:</label>
+        <input type="date" id="productionDate" placeholder="Ngày sản xuất..." required><br>
+    
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" required><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Vị trí..." required><br>
+    
+        <label for="batchNumber">Batch Number:</label>
+        <input type="text" id="batchNumber" placeholder="Mã lô..." required><br>
+    
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" placeholder="Thành phần..." required><br>
+    
+        <label for="status">Status:</label>
+        <input type="checkbox" id="status"><br>
+    </form>
+
+    <button type="button" onclick="updateDrug()">Update Drug</button>
+    <button type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+</form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="./src/connect.js"></script>
+    <script src="./src/update.js"></script>
+    <script>
+      
+    </script>
+</body>
+</html>
