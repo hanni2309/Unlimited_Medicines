@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./Frontend/css/introduce.css">
+</head>
+
+<body>
+  <header>
+    <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+
+    <nav class="menu-nav">
+      <ul>
+        <li><a href="./Frontend/index.html">Home</a></li>
+        <li><a href="introduce.html">Introduce</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="contact-form">
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="button" onclick="submitForm()">Send Message</button>
+    </form>
+    <script>
+      function submitForm() {
+        // Here you can add code to handle form submission
+        // For example, you can use AJAX to send the form data to a server
+        // and then process the email sending on the server side.
+        alert('Form submitted successfully!');
+    }
+    </script>
+</section>
+
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>Liên hệ</h3>
+        <p>Email: viet.info.43@email.com</p>
+        <p>Tại: Đại học Kiến trúc Đà Nẵng</p>
+        <p>Địa chỉ: 566 Núi Thành, Hoà Cường Nam,<br> Hải Châu, Đà Nẵng, Việt Nam</p>
+      </div>
+      <div class="footer-center">
+        <h3>Liên kết</h3>
+        <a href="#">Trang chủ</a>
+        <a href="#">Dịch vụ</a>
+        <a href="#">Giới thiệu</a>
+      </div>
+      <div class="footer-right">
+        <h3>Thông tin bản quyền</h3>
+        <p>&copy; 2023 Unlimited_Mediciné</p>
+        <p>
+        <div class="image-row">
+          <a href="#"><img src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/733/733609.png" alt=""></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670147.png" alt=""></a>
+
+        </div>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 *{
+  color: white ;
   background-color: #092635;
 }
 header {
@@ -132,3 +133,48 @@ footer {
 }
 
 
+.mid-side {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-size: larger;
+  margin-right: 10px ;
+}
+
+section div {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.contact-form {
+  padding-top:70px;
+  margin: 20px;
+}
+
+form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background-color: #5C8374;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: blue;
+}
+
+.contact-info {
+  margin: 20px;
+}
