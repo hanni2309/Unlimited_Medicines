@@ -1,0 +1,142 @@
+*{
+  padding: 0;
+  margin: 0;
+  /* font-family: 'Poppins', sans-serif; */
+  background-color: #092635;
+}
+
+.wallet-site {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  height: max-content;
+  font-size: larger;
+}
+
+.menu-wallet {
+  text-align: left;
+  margin-top: 50%;
+  line-height: 2;
+  padding-left:50%;
+  border-right:1px black solid;
+}
+
+.menu-wallet ul {
+  list-style: none;
+}
+
+.menu-wallet ul li a {
+
+  text-decoration: none;
+}
+
+
+.menu-wallet ul li a:hover {
+  background-color: #1B4242;
+}
+
+.btn-wallet {
+  width: 100px;
+  height: 50px;
+  z-index: 1;
+}
+
+.btn-wallet a {
+  text-decoration: none;
+}
+.btn-wallet{
+  border: none;
+  background-color: #092635;
+}
+
+.btn-wallet a{
+    background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  transition: background-position 0.5s;
+  background-size: 200% auto;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  animation: rainbowAnimation 3s linear infinite;
+}
+
+.btn-wallet:hover a{
+  box-shadow: black;
+  background-position: right center;
+  background-color: blanchedalmond;
+}
+
+
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
+.wallet-btn-site { 
+  text-align: center;
+  margin-top: 30%;
+}
+
+.bubble {
+  width: 20px;
+  height: 20px;
+  background-color: #3498db; /* Màu của bóng */
+  position: absolute;
+  border-radius: 50%;
+  left :-30px;
+}
+
+
+
+
+/* Thêm các lớp .bubble3, .bubble4, ... cho bong bóng khác nếu cần */
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hospital-icon img {
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-200px);
+    opacity: 0.5;
+  }
+  70% {
+    transform: translateY(-270px);
+    opacity: 0.3;
+  }
+  90% {
+    transform: translateY(-360px);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-400px);
+    opacity: 0;
+  }
+}
