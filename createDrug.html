@@ -21,14 +21,31 @@
       </nav>
     </header>
 
-    <aside>
+    <aside class="hidden-menu">
         <img  style="width:150px ; height:150px; border-bottom: 1px white solid;" src="./Frontend/css/logo.png" alt="">
         <nav>
           <a href="showDrug.html">Show</a>
           <a href="createDrug.html">Add</a>
         </nav>
       </aside>
+      <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+      <script>
+   
+        function toggleMenu() {
+            var menu = document.querySelector('.hidden-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            var aside = document.querySelector('.hidden-menu');
+            var body = document.body;
+            var footer = document.querySelector('footer');
 
+            aside.classList.toggle('menu-closed');
+            body.classList.toggle('menu-open');
+            footer.classList.toggle('menu-open');
+        }
+
+        // Your other script functions go here...
+
+    </script>
     <form>
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Tên thuốc..." required><br>
