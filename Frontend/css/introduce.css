@@ -1,0 +1,180 @@
+*{
+  color: white ;
+  background-color: #092635;
+}
+header {
+  
+  top: 0;
+  right: 0;
+  position: fixed;
+  z-index: 1000;
+  background-color: #092635;
+  color: #5C8374;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  width: 100% ;
+}
+
+.menu-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu-nav li {
+  margin-right: 20px;
+}
+
+.menu-nav a {
+  text-decoration: none;
+  color: lightblue;
+  font-weight: bold;
+}
+
+
+.slideshow-container {
+  margin-top: 80px;
+  position: relative;
+}
+
+/* Style cho mỗi slide */
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  max-width: 100%; /* Hình ảnh sẽ không vượt quá chiều rộng của container */
+  height: auto; /* Giữ tỷ lệ khung hình khi thay đổi kích thước */
+}
+
+/* Nút chuyển slide */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -30px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Hover effect cho nút chuyển slide */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+footer {
+  margin-top : 40px;
+  border-top: #fff 1px solid;
+  border-bottom: #fff 1px solid;
+  background-color: #092635;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-left : 15px ;
+}
+
+.footer-container div {
+  flex: 1;
+}
+
+.footer-left h3,
+.footer-center h3,
+.footer-right h3 {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.footer-left p,
+.footer-center a,
+.footer-right p {
+  margin-bottom: 10px;
+}
+
+.footer-center a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.footer-center a:hover {
+  text-decoration: underline;
+}
+
+.image-row {
+  display: flex;
+}
+
+.image-row a {
+  margin-right: 10px; /* Khoảng cách giữa các hình ảnh */
+}
+
+.image-row img {
+  width: 40px;
+  height: 40px;
+  /* max-width: 100%; */
+}
+
+
+.mid-side {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-size: larger;
+  margin-right: 10px ;
+}
+
+section div {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.contact-form {
+  padding-top:70px;
+  margin: 20px;
+}
+
+form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background-color: #5C8374;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: blue;
+}
+
+.contact-info {
+  margin: 20px;
+}

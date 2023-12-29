@@ -9,30 +9,72 @@
 </head>
 <body>
     <header> <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
-        <nav class ="menu-nav">
+        <nav class="menu-nav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#">Document</a></li>
-                <li><a href="#">About</a></li>
+              <li><a href="./Frontend/index.html">Home</a></li>
+              <li><a href="introduce.html">Introduce</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="about.html">About</a></li>
             </ul>
-        </nav>
+          </nav>
     </header>
 
-    <aside>
+    <aside class="hidden-menu">
         <img  style="width:150px ; height:150px; border-bottom: 1px white solid;" src="./Frontend/css/logo.png" alt="">
         <nav>
           <a href="showDrug.html">Show</a>
           <a href="createDrug.html">Add</a>
         </nav>
       </aside>
+      <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+      <script>
+   
+        function toggleMenu() {
+            var menu = document.querySelector('.hidden-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            var aside = document.querySelector('.hidden-menu');
+            var body = document.body;
+            var footer = document.querySelector('footer');
 
+            aside.classList.toggle('menu-closed');
+            body.classList.toggle('menu-open');
+            footer.classList.toggle('menu-open');
+        }
+
+        // Your other script functions go here...
+
+    </script>
     <form>
         <label for="name">Name:</label>
         <input type="text" id="name" required><br>
+<!-- 
+        <label for="classification">Classification:</label>
+        <input type="text" id="classification" required><br> -->
 
         <label for="classification">Classification:</label>
-        <input type="text" id="classification" required><br>
+        <select id="classificationSelect" onchange="updateInput()">
+            <option value="" disabled selected>Select classification...</option>
+            <option value="uses">Theo Mục đích Sử Dụng</option>
+            <option value="medicine form">Theo Dạng Thuốc</option>
+            <option value="Mechanism of Action">Cơ Chế Hoạt Động</option>
+            <option value="Chemistry Group">Theo Nhóm Hoá Học</option>
+            <option value="medicine form">Theo Khu Vực Tác Động</option>
+            <!-- Thêm các option khác nếu cần -->
+        </select>
+
+        <script>
+            function updateInput() {
+                var selectElement = document.getElementById("classificationSelect");
+                var inputElement = document.getElementById("classification");
+      
+                // Gán giá trị từ option vào input
+                inputElement.value = selectElement.value;
+               
+            }
+          </script>
+
+        <!-- Input ẩn để lưu giữ giá trị được chọn -->
+        <input  style="display:none;" type="text" id="classification" name="classification" readonly required>
 
         <label for="expirationDate">Expiration Date:</label>
         <input type="date" id="expirationDate" placeholder="Hạn sử dụng..." required><br>
@@ -56,8 +98,8 @@
         <input type="checkbox" id="status"><br>
     </form>
 
-    <button type="button" onclick="updateDrug()">Update Drug</button>
-    <button type="button" onclick="redirectToShowDrug()">Show Drugs</button>
+    <button class="rainbow-hover" type="button" onclick="updateDrug()">Update Drug</button>
+    <!-- <button type="button" onclick="redirectToShowDrug()">Show Drugs</button> -->
 </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
@@ -66,5 +108,37 @@
     <script>
       
     </script>
+
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">
+          <h3>Liên hệ</h3>
+          <p>Email: viet.info.43@email.com</p>
+          <p>Tại: Đại học Kiến trúc Đà Nẵng</p>
+          <p>Địa chỉ: 566 Núi Thành, Hoà Cường Nam,<br> Hải Châu, Đà Nẵng, Việt Nam</p>
+        </div>
+        <div class="footer-center">
+          <h3>Liên kết</h3>
+          <a href="#">Trang chủ</a>
+          <a href="#">Dịch vụ</a>
+          <a href="#">Giới thiệu</a>
+        </div>
+        <div class="footer-right">
+          <h3>Thông tin bản quyền</h3>
+          <p>&copy; 2023 Unlimited_Mediciné</p>
+          <p>
+              <div class="image-row">
+                  <a href="#"><img src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></a>
+                  <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/733/733609.png" alt=""></a>
+                  <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670147.png" alt=""></a>
+
+                </div>
+                
+          </p>
+        </div>
+      </div>
+    </footer>
+ 
 </body>
 </html>

@@ -16,15 +16,22 @@
 
         <nav class="menu-nav">
             <ul>
+<<<<<<< HEAD
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Product</a></li>
                 <li><a href="https://solidity-by-example.org/">Document</a></li>
                 <li><a href="about.html">About</a></li>
+=======
+              <li><a href="./Frontend/index.html">Home</a></li>
+              <li><a href="introduce.html">Introduce</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="about.html">About</a></li>
+>>>>>>> a1e670ea861bfa8653a1e3b020324d80ff5312a5
             </ul>
-        </nav>
+          </nav>
     </header>
 
-    <aside>
+    <aside class="hidden-menu">
         <img  style="width:150px ; height:150px; border-bottom: 1px white solid;" src="./Frontend/css/logo.png" alt="">
         <nav>
            
@@ -32,7 +39,24 @@
             <a href="createDrug.html">Add</a>
         </nav>
     </aside>
+    <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <script>
+   
+        function toggleMenu() {
+            var menu = document.querySelector('.hidden-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            var aside = document.querySelector('.hidden-menu');
+            var body = document.body;
+            var footer = document.querySelector('footer');
 
+            aside.classList.toggle('menu-closed');
+            body.classList.toggle('menu-open');
+            footer.classList.toggle('menu-open');
+        }
+
+        // Your other script functions go here...
+
+    </script>
     <div class="taskbar">
 
 
