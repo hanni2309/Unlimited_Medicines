@@ -1,3 +1,13 @@
+  // Ensure that Web3 is defined before calling connectContract
+  if (typeof window.web3 === 'undefined') {
+    throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+}
+
+// Ensure that connectContract is called after Web3 is defined
+window.addEventListener('DOMContentLoaded', (event) => {
+    connectContract();
+});
+
 const createDrug = async () => {
     try {
         // Ensure window.contract is defined before accessing its methods
@@ -45,4 +55,8 @@ const createDrug = async () => {
     } catch (error) {
         console.error("Error creating drug:", error);
     }
+    redirectToShowDrug();
 };
+function redirectToShowDrug() {
+    window.location.href = "showDrug.html";
+}

@@ -1,0 +1,134 @@
+*{
+  padding: 0;
+  margin: 0;
+  
+}
+
+
+label{
+  background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  transition: background-position 0.5s;
+  background-size: 200% auto;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  text-decoration: none;
+  
+  animation: rainbowAnimation 15s linear infinite;
+}
+
+.btn-update {
+  background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+color: transparent;
+display: inline-block;
+transition: background-position 0.5s;
+background-size: 200% auto;
+cursor: pointer;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+text-decoration: none;
+margin-left: 38%;
+cursor: pointer;
+border: 2px solid #3498db;
+border-radius: 5px;
+
+animation: rainbowAnimation 50s linear infinite;
+
+}
+
+.btn-update:hover {
+box-shadow: black;
+background-position: right center;
+background-color: blanchedalmond;
+}
+
+
+
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
+
+
+
+h1 {
+  margin-top: 20px;
+  text-align: center;
+  color: #333;
+  background-color: aquamarine;
+  display: inline-block;
+  margin-left:  43%;
+  border-radius: 10px;
+}
+
+#addForm {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: grid;
+  
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"], input[type="number"], input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 1px;
+}
+
+/* Add more styles as needed */
+
+
+header {
+  background-color: aquamarine;
+  color: lightskyblue;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.menu-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu-nav li {
+  margin-right: 20px;
+}
+
+.menu-nav a {
+  text-decoration: none;
+  color: lightblue;
+  font-weight: bold;
+}
