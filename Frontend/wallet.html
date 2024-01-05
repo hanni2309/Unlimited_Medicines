@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/wallet.css">
+
+</head>
+
+<body>
+  <header> <div><img style="width:70px; height:70px" src="./css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+    <nav class="menu-nav">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="../introduce.html">Introduce</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </nav>
+</header>
+
+  <div id = "respon-wallet">
+    <span>Your Wallet : </span>
+    <label id="accountArea" for=""></label>
+    <!-- <button onclick="disconnectMetamask()" >disconnect Metamask</button>
+    <script src="../src/disconnectMetamask.js"></script> -->
+  </div>
+  <div class="task-view">
+    <div>
+      <button  onclick="connectContract()">CONNECT TO CONTRACT</button> 
+      <p id="contractArea"></p>
+    </div>
+  </div>
+
+  <div class="task-view">
+    <div>
+      <button><a href="../showDrug.html">SHOW</a></button> <br>
+      <p> come to show Drug</p>
+    </div>
+  </div>
+
+  <div class="task-view">
+    <div>
+      <buttoN><a href="../createDrug.html">ADD</a></button> <br>
+        <p> come to add Drug</p>
+    </div>
+  </div>
+
+
+
+  <script>
+      // Ensure that Web3 is defined before calling connectContract
+      if (typeof window.web3 === 'undefined') {
+          throw new Error('Web3 is not defined. Make sure the Web3 library is loaded.');
+      }
+
+      // Ensure that connectContract is called after Web3 is defined
+      window.addEventListener('DOMContentLoaded', (event) => {
+          connectContract();
+      });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+  <script src="../src/connectMetamask.js"></script>
+  <script src="../src/connectContract.js"></script>
+  <script src="../src/createDrug.js"></script>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Lấy dữ liệu từ localStorage
+      var accountInfo = localStorage.getItem('connectedAccount');
+
+      // Kiểm tra xem có dữ liệu hay không
+      if (accountInfo) {
+        // Đặt nội dung vào thẻ <p>
+        document.getElementById('accountArea').innerHTML = accountInfo;
+      }
+    });
+  </script>
+
+  <div class="bubble"></div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      createBubbles();
+    });
+    
+    function createBubbles() {
+      for (let i = 0; i < 7; i++) { // Thay đổi số lượng bóng nổ ở đây
+        createBubble();
+      }
+    }
+    
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      document.body.appendChild(bubble);
+    
+      const xPos = Math.random() * window.innerWidth;
+      const duration = Math.random() * 10 + 8;
+    
+      bubble.style.left = `${xPos}px`;
+      bubble.style.animation = `floatUp ${duration}s ease-out`;
+    
+      bubble.addEventListener("animationend", function () {
+        bubble.remove();
+        createBubble();
+      });
+    }
+    
+    
+  </script>
+
+</body>
+
+</html>

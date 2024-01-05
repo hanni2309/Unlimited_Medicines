@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./Frontend/css/introduce.css">
+</head>
+
+<body>
+  <header>
+    <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+
+    <nav class="menu-nav">
+      <ul>
+        <li><a href="./Frontend/index.html">Home</a></li>
+        <li><a href="introduce.html">Introduce</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="./Frontend/img/1.png" alt="Slide 1">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="./Frontend/img/2.png"   alt="Slide 2">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="./Frontend/img/3.png"   alt="Slide 3">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./Frontend/img/4.png"   alt="Slide 4">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./Frontend/img/5.png"   alt="Slide 5">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./Frontend/img/6.png"   alt="Slide 6">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./Frontend/img/7.png"   alt="Slide 7">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./Frontend/img/8.png"   alt="Slide 8">
+    </div>
+    <!-- Thêm nhiều slide khác nếu cần -->
+
+    <!-- Nút chuyển slide -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+  <script>
+    var slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 10000); 
+}
+  </script>
+
+    <div class="mid-side">
+        <p>
+      
+Sứ Mệnh:
+"Tạo ra những sản phẩm thuốc chất lượng cao và dịch vụ y tế tiên tiến, mang lại sức khỏe và chất lượng cuộc sống tốt đẹp cho cộng đồng toàn cầu. Chúng tôi cam kết nghiên cứu, phát triển, và cung cấp những giải pháp y tế hiệu quả, an toàn và tiện lợi, để đáp ứng nhu cầu đa dạng của bệnh nhân và chăm sóc sức khỏe."
+</p>
+<p>
+Tầm Nhìn:
+"Trở thành một động lực lớn trong sự đổi mới y tế, đem đến những cải tiến đột phá trong ngành công nghiệp dược phẩm. Chúng tôi hình dung một tương lai nơi mọi người có thể truy cập và tận hưởng những sản phẩm y tế tiên tiến một cách dễ dàng, nhanh chóng, và bền vững. Với tầm nhìn này, chúng tôi mong muốn góp phần vào việc cải thiện chất lượng cuộc sống và đem lại hy vọng cho mọi người trên khắp thế giới."
+        </p>
+    </div>
+
+    <section>
+        <label for=""> 
+            <img src="https://i.pinimg.com/236x/0a/38/0c/0a380ca81faef88eb3c93de3d3c937f1.jpg" alt="">
+            <p>
+            <h3>Chất Lượng Sản Phẩm:</h3>
+            <br>
+Cung cấp các sản phẩm thuốc chất lượng, được sản xuất và phân phối đúng cách theo quy định y tế.
+Đảm bảo rằng các sản phẩm đều có nguồn gốc rõ ràng và an toàn.
+        </p></label>
+        
+           
+        <label for="">
+            <img src="https://i.pinimg.com/236x/97/98/0d/97980ded10287c61c67fb4c9ecf647a7.jpg" alt="">
+            <p>
+                <h3>Kiểm Soát Chất Lượng và Kiểm Tra Thuốc:</h3>
+Thực hiện kiểm soát chất lượng nghiêm ngặt để đảm bảo sự an toàn và hiệu quả của thuốc.
+Kiểm tra định kỳ để đảm bảo rằng các sản phẩm đều đáp ứng các tiêu chuẩn chất lượng.
+            </p>
+        </label>
+    </section>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>Liên hệ</h3>
+        <p>Email: viet.info.43@email.com</p>
+        <p>Tại: Đại học Kiến trúc Đà Nẵng</p>
+        <p>Địa chỉ: 566 Núi Thành, Hoà Cường Nam,<br> Hải Châu, Đà Nẵng, Việt Nam</p>
+      </div>
+      <div class="footer-center">
+        <h3>Liên kết</h3>
+        <a href="#">Trang chủ</a>
+        <a href="#">Dịch vụ</a>
+        <a href="#">Giới thiệu</a>
+      </div>
+      <div class="footer-right">
+        <h3>Thông tin bản quyền</h3>
+        <p>&copy; 2023 Unlimited_Mediciné</p>
+        <p>
+        <div class="image-row">
+          <a href="#"><img src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/733/733609.png" alt=""></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670147.png" alt=""></a>
+
+        </div>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
+

@@ -32,7 +32,7 @@ const createDrug = async () => {
            // Clear the form fields after successful creation
           document.getElementById("name").value = "";
           document.getElementById("classification").value = "";
-          document.getElementById("expirationDate").value = ""; 
+          document.getElementById("expirationDate").value = "";
           document.getElementById("productionDate").value = "";
           document.getElementById("quantity").value = "";
           document.getElementById("location").value = "";

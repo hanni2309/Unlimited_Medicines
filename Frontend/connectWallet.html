@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+  <script type="module" src="main.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="bubble"></div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      createBubbles();
+    });
+    
+    function createBubbles() {
+      for (let i = 0; i < 7; i++) { // Thay đổi số lượng bóng nổ ở đây
+        createBubble();
+      }
+    }
+    
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      document.body.appendChild(bubble);
+    
+      const xPos = Math.random() * window.innerWidth;
+      const duration = Math.random() * 10 + 8;
+    
+      bubble.style.left = `${xPos}px`;
+      bubble.style.animation = `floatUp ${duration}s ease-out`;
+    
+      bubble.addEventListener("animationend", function () {
+        bubble.remove();
+        createBubble();
+      });
+    }
+    
+    
+  </script>
+<!-- Thêm các div khác nếu cần -->
+
+   <div class="wallet-site">
+    <div class="menu-wallet">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="../introduce.html">Introduce</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+    </div>
+    <div class="wallet-btn-site">
+      <div class="hospital-icon">
+        <img style="width:100px; height:100px;" src="./css/Unlimited_MEDICINÉ-removebg.png" alt="">
+      </div>
+    
+      <button class="btn-wallet" onclick="connectMetamask()">
+        <a>Connect Wallet</a>
+        
+      </button>
+      <div>
+       
+    </div>
+   </div>
+   <script src="../src/connectMetamask.js"></script>
+  
+</body>
+</html>

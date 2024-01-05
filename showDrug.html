@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Frontend/css/show.css">
+    <title>Show Drugs</title>
+</head>
+
+<body onload="getAllDrugs()" onload="displayDrugTable()">
+    <header>
+        <div><img style="width:70px; height:70px" src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></div>
+
+
+        <nav class="menu-nav">
+            <ul>
+                <li><a href="./Frontend/index.html">Home</a></li>
+                <li><a href="introduce.html">Introduce</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+          </nav>
+    </header>
+
+    <aside class="hidden-menu">
+        <img  style="width:150px ; height:150px; border-bottom: 1px white solid;" src="./Frontend/css/logo.png" alt="">
+        <nav>
+           
+            <a href="showDrug.html">Show</a>
+            <a href="createDrug.html">Add</a>
+        </nav>
+    </aside>
+    <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <script>
+   
+        function toggleMenu() {
+            var menu = document.querySelector('.hidden-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            var aside = document.querySelector('.hidden-menu');
+            var body = document.body;
+            var footer = document.querySelector('footer');
+
+            aside.classList.toggle('menu-closed');
+            body.classList.toggle('menu-open');
+            footer.classList.toggle('menu-open');
+        }
+
+        // Your other script functions go here...
+
+    </script>
+    <div class="taskbar">
+
+
+        <!-- <button onclick="getAllDrugs()">Show All Drugs</button> -->
+
+        <script>
+            window.onload = async function () {
+                try {
+                    await getAllDrugs();
+                } catch (error) {
+                    console.error('Error showing all drugs:', error);
+                }
+            };
+        </script>
+        
+        <div id = "section-option">
+            <select onclick="getDrugsByClassification()" id="classificationSelect" onchange="updateInput()">
+                <option value="" disabled selected>Select classification...</option>
+                <option  value="All">Tất cả</option>
+                <option value="uses">Theo Mục đích Sử Dụng</option>
+                <option value="medicine form">Theo Dạng Thuốc</option>
+                <option value="Mechanism of Action">Cơ Chế Hoạt Động</option>
+                <option value="Chemistry Group">Theo Nhóm Hoá Học</option>
+                <option value="medicine form">Theo Khu Vực Tác Động</option>
+                <!-- Thêm các option khác nếu cần -->
+            </select>
+    
+            <!-- Input ẩn để lưu giữ giá trị được chọn -->
+            <input  style="display:none;" type="text" id="classification" name="classification" readonly required>
+        </div>
+        <!-- <button onclick="getAllDrugs()">Show All Drugs</button> -->
+        <!-- <button onclick="getDrugsByClassification()">Show Drugs by Classification</button> -->
+
+        <!-- <label for="drugId">Enter Drug ID:</label> -->
+        <input type="text" id="drugId">
+        <button onclick="getDrugById()  ">Get Drug by ID</button>
+    </div>
+    <div id="drugInfo"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="./src/connect.js"></script>
+    <script>
+        async function getAllDrugs() {
+            try {
+                if (window.contract) {
+                    const drugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
+                    displayDrugTable(drugs);
+                } else {
+                    console.error("Contract is not properly initialized.");
+                }
+            } catch (error) {
+                console.error("Error fetching drug data:", error);
+            }
+        }
+
+      
+
+     
+        async function getDrugsByClassification() {
+            try {
+                if (window.contract) {
+                    const selectElement = document.getElementById("classificationSelect");
+                    const classification = selectElement.value;
+        
+                    if (classification.toLowerCase() === "all") {
+                        // Nếu là "All", không cần truyền phân loại, hoặc có thể truyền null hoặc một giá trị khác để biểu thị "All"
+                        const drugs = await window.contract.methods.getAllDrugs().call({ from: window.ethereum.selectedAddress });
+                        displayDrugTable(drugs);
+                    } else {
+                        const drugs = await window.contract.methods.getDrugsByClassification(classification).call({ from: window.ethereum.selectedAddress });
+                        displayDrugTable(drugs);
+                    }
+                } else {
+                    console.error("Contract is not properly initialized.");
+                }
+            } catch (error) {
+                console.error("Error fetching drug data by classification:", error);
+            }
+        }
+        
+
+        async function getDrugById() {
+            try {
+                if (window.contract) {
+                    const drugId = document.getElementById("drugId").value;
+                    if (drugId) {
+                        const drug = await window.contract.methods.getDrug(drugId).call({ from: window.ethereum.selectedAddress });
+                        displaySingleDrug(drug);
+                    } else {
+                        console.error("Drug ID input is empty.");
+                    }
+                } else {
+                    console.error("Contract is not properly initialized.");
+                }
+            } catch (error) {
+                console.error("Error fetching drug data by ID:", error);
+            }
+        }
+
+        function displaySingleDrug(drug) {
+            const drugInfoDiv = document.getElementById("drugInfo");
+            drugInfoDiv.innerHTML = `
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Classification</th>
+                <th>Expiration Date</th>
+                <th>Production Date</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Batch Number</th>
+                <th>Ingredients</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>${drug.id}</td>
+                <td>${drug.name}</td>
+                <td>${drug.classification}</td>
+                <td>${drug.expirationDate}</td>
+                <td>${drug.productionDate}</td>
+                <td>${drug.quantity}</td>
+                <td>${drug.location}</td>
+                <td>${drug.batchNumber}</td>
+                <td>${drug.ingredients}</td>
+                <td>${drug.status ? "Available" : "Out of Stock"}</td>
+                <td>
+                    <button onclick="redirectToUpdateDrug(${drug.id})">Update</button>
+                    <button onclick="deleteDrug(${drug.id})">Delete</button>
+                </td>
+
+            </tr>
+        </table>
+    `;
+        }
+
+        function displayDrugTable(drugs) {
+            const drugTable = document.createElement("table");
+            drugTable.innerHTML = `
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Classification</th>
+                    <th>Expiration Date</th>
+                    <th>Production Date</th>
+                    <th>Quantity</th>
+                    <th>Location</th>
+                    <th>Batch Number</th>
+                    <th>Ingredients</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            `;
+
+            for (const drug of drugs) {
+                if (drug.id > 0) {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${drug.id}</td>
+                    <td>${drug.name}</td>
+                    <td>${drug.classification}</td>
+                    <td>${drug.expirationDate}</td>
+                    <td>${drug.productionDate}</td>
+                    <td>${drug.quantity}</td>
+                    <td>${drug.location}</td>
+                    <td>${drug.batchNumber}</td>
+                    <td>${drug.ingredients}</td>
+                    <td>${drug.status ? "Available" : "Out of Stock"}</td>
+                    <td>
+                        <button onclick="redirectToUpdateDrug(${drug.id})">Update</button>
+                        <button onclick="deleteDrug(${drug.id})">Delete</button>
+                    </td>
+                `;
+                drugTable.appendChild(row);
+            }
+        }
+
+            const drugInfoDiv = document.getElementById("drugInfo");
+            drugInfoDiv.innerHTML = "";
+            drugInfoDiv.appendChild(drugTable);
+        }
+
+       
+
+        // Function to delete a drug by its ID
+        async function deleteDrug(drugId) {
+            try {
+                if (window.contract) {
+                    // Call the deleteDrug function from the smart contract
+                    await window.contract.methods.deleteDrug(drugId).send({ from: window.ethereum.selectedAddress });
+
+                    // Refresh the drug list after successful deletion
+                    displayDrugs();
+
+                    // Show a success message (you can customize this)
+                    alert("Drug deleted successfully!");
+                } else {
+                    console.error("Contract is not properly initialized.");
+                }
+            } catch (error) {
+                console.error("Error deleting drug:", error);
+            }
+        }
+
+        // chuyển sang trang update tương ứng vs từng drug
+        function redirectToUpdateDrug(drugId) {
+            window.location.href = `updateDrug.html?id=${drugId}`;
+        }
+
+    </script>
+
+    
+   
+        <footer>
+            <div class="footer-container">
+            <div class="footer-left">
+                <h3>Liên hệ</h3>
+                <p>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=viet.info.43@email.com"> viet.info.43@email.com</a></p>
+                <p>Tại: <a href="https://tuyensinh.dau.edu.vn/">Đại học Kiến trúc Đà Nẵng</a></p>
+                <p>Địa chỉ: 566 Núi Thành, Hoà Cường Nam,<br> Hải Châu, Đà Nẵng, Việt Nam</p>
+            </div>
+            <div class="footer-center">
+                <h3>Liên kết</h3>
+                <a href="https://solidity-by-example.org/">Trang chủ remix</a>
+                <a href="Service.html">Dịch vụ</a>
+                <a href="introblockchain.html">Giới thiệu</a>
+            </div>
+            <div class="footer-right">
+                <h3>Thông tin bản quyền</h3>
+                <p>&copy; 2023 Unlimited_Mediciné</p>
+                <p>
+                    <div class="image-row">
+                        <a href="#"><img src="./Frontend/css/Unlimited_MEDICINÉ-removebg.png" alt=""></a>
+                        <a href="https://github.com/hanni2309/Unlimited_Medicines"><img src="https://cdn-icons-png.flaticon.com/128/733/733609.png" alt=""></a>
+                        <a href="https://www.youtube.com/watch?v=dm5-tn1Rug0&list=RDPys2iOT9rpw&index=2"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670147.png" alt=""></a>
+
+                    </div>
+                    
+                </p>
+            </div>
+            </div>
+        </footer>
+        
+    </body>
+
+    </html>
